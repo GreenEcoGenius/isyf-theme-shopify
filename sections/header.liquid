@@ -213,8 +213,21 @@
       </div>
     </div>
 
-    <a href="/collections/new-arrivals" class="isyf-nav-drawer-link">New Arrivals</a>
-    <a href="/collections/sale" class="isyf-nav-drawer-link">Sale</a>
+    {%- comment -%} Sale {%- endcomment -%}
+    <div class="isyf-nav-drawer-group" data-drawer-group>
+      <button class="isyf-nav-drawer-link isyf-nav-drawer-group-btn" data-drawer-group-toggle>
+        Sale <span>+</span>
+      </button>
+      <div class="isyf-nav-drawer-sub-menu">
+        <div class="isyf-nav-drawer-sub-group">
+          <a href="/collections/sale-women" class="isyf-nav-drawer-sub-link">Women</a>
+          <a href="/collections/sale-men" class="isyf-nav-drawer-sub-link">Men</a>
+        </div>
+        <div class="isyf-nav-drawer-sub-group">
+          <a href="/collections/sale" class="isyf-nav-drawer-sub-link" style="font-weight:500; letter-spacing:0.1em; text-transform:uppercase; font-size:12px; margin-top:8px;">Shop All Sale</a>
+        </div>
+      </div>
+    </div>
 
     <div class="isyf-nav-drawer-divider"></div>
 
