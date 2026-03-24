@@ -8,6 +8,20 @@
 -%}
 
 <style>
+  .isyf-nav {
+    position: relative;
+  }
+  .isyf-nav-links,
+  .isyf-nav-links-right {
+    flex: 0 0 auto;
+    max-width: calc(50% - 100px);
+  }
+  .isyf-nav-logo-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
   .isyf-nav-mega-menu {
     display: none;
   }
@@ -76,8 +90,6 @@
     </div>
 
     <a href="/collections/accessories" class="isyf-nav-link">Accessories</a>
-    <a href="/pages/lookbook" class="isyf-nav-link">Lookbook</a>
-    <a href="/pages/about" class="isyf-nav-link">Our Story</a>
   </nav>
 
   {%- comment -%} Center logo {%- endcomment -%}

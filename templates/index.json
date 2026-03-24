@@ -1,6 +1,6 @@
 {
   "sections": {
-    "announcement-bar": {
+    "announcement": {
       "type": "announcement-bar",
       "settings": {
         "text": "FREE WORLDWIDE SHIPPING ON ORDERS OVER €100"
@@ -15,7 +15,7 @@
         "button_url": "/collections/all"
       }
     },
-    "featured-collection": {
+    "featured": {
       "type": "featured-collection",
       "settings": {
         "heading": "THE SELECTION",
@@ -23,10 +23,11 @@
         "products_to_show": 4
       }
     },
-    "category-grid": {
+    "categories": {
       "type": "category-grid",
+      "settings": {},
       "blocks": {
-        "cat-women": {
+        "cat_women": {
           "type": "category",
           "settings": {
             "title": "WOMEN",
@@ -34,7 +35,7 @@
             "link": "/collections/women"
           }
         },
-        "cat-men": {
+        "cat_men": {
           "type": "category",
           "settings": {
             "title": "MEN",
@@ -42,7 +43,7 @@
             "link": "/collections/men"
           }
         },
-        "cat-accessories": {
+        "cat_accessories": {
           "type": "category",
           "settings": {
             "title": "ACCESSORIES",
@@ -51,9 +52,9 @@
           }
         }
       },
-      "block_order": ["cat-women", "cat-men", "cat-accessories"]
+      "block_order": ["cat_women", "cat_men", "cat_accessories"]
     },
-    "image-with-text": {
+    "story": {
       "type": "image-with-text",
       "settings": {
         "heading": "What I see, you feel.",
@@ -62,24 +63,25 @@
         "link_url": "/pages/about"
       }
     },
-    "article-grid": {
+    "articles": {
       "type": "article-grid",
       "settings": {
         "heading": "FROM THE JOURNAL",
         "articles_to_show": 3
       }
     },
-    "two-items-grid": {
+    "collections": {
       "type": "two-items-grid",
+      "settings": {},
       "blocks": {
-        "grid-premium": {
+        "grid_premium": {
           "type": "card",
           "settings": {
             "title": "ISYF PREMIUM",
             "button_label": "DISCOVER"
           }
         },
-        "grid-feels": {
+        "grid_feels": {
           "type": "card",
           "settings": {
             "title": "ISYF FEELS",
@@ -87,9 +89,9 @@
           }
         }
       },
-      "block_order": ["grid-premium", "grid-feels"]
+      "block_order": ["grid_premium", "grid_feels"]
     },
-    "full-image-banner": {
+    "banner": {
       "type": "full-image-banner",
       "settings": {
         "subtitle": "Every design carries a message",
@@ -104,21 +106,21 @@
         "heading": "WHAT THEY SAY"
       },
       "blocks": {
-        "testimonial-1": {
+        "testimonial_1": {
           "type": "testimonial",
           "settings": {
             "quote": "The embroidered hoodie is the softest thing I've ever worn. The quality is unreal.",
             "author": "Sara J."
           }
         },
-        "testimonial-2": {
+        "testimonial_2": {
           "type": "testimonial",
           "settings": {
             "quote": "I love that every piece has a message. ISYF FEELS tees are my go-to.",
             "author": "Alex M."
           }
         },
-        "testimonial-3": {
+        "testimonial_3": {
           "type": "testimonial",
           "settings": {
             "quote": "Finally a brand that gets it. Premium quality without the pretentious price tag.",
@@ -126,9 +128,9 @@
           }
         }
       },
-      "block_order": ["testimonial-1", "testimonial-2", "testimonial-3"]
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
     },
-    "instagram-feed": {
+    "instagram": {
       "type": "instagram-feed",
       "settings": {
         "subtitle": "Follow us on Instagram",
@@ -136,13 +138,13 @@
         "instagram_url": "https://instagram.com/iseeyoufeel"
       },
       "blocks": {
-        "ig-1": { "type": "image" },
-        "ig-2": { "type": "image" },
-        "ig-3": { "type": "image" },
-        "ig-4": { "type": "image" },
-        "ig-5": { "type": "image" }
+        "ig_1": { "type": "image" },
+        "ig_2": { "type": "image" },
+        "ig_3": { "type": "image" },
+        "ig_4": { "type": "image" },
+        "ig_5": { "type": "image" }
       },
-      "block_order": ["ig-1", "ig-2", "ig-3", "ig-4", "ig-5"]
+      "block_order": ["ig_1", "ig_2", "ig_3", "ig_4", "ig_5"]
     },
     "subscribe": {
       "type": "subscribe",
@@ -153,16 +155,16 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "announcement",
     "hero",
-    "featured-collection",
-    "category-grid",
-    "image-with-text",
-    "article-grid",
-    "two-items-grid",
-    "full-image-banner",
+    "featured",
+    "categories",
+    "story",
+    "articles",
+    "collections",
+    "banner",
     "testimonials",
-    "instagram-feed",
+    "instagram",
     "subscribe"
   ]
 }
