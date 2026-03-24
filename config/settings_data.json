@@ -1,0 +1,22 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_primary": "#000000",
+      "color_background": "#FFFFFF",
+      "color_secondary": "#F7F7F7",
+      "color_accent": "#E01715",
+      "color_text_muted": "#999999",
+      "heading_font": "playfair_display_n4",
+      "body_font": "dm_sans_n3",
+      "social_instagram_url": "https://instagram.com/iseeyoufeel",
+      "social_tiktok_url": "https://tiktok.com/@iseeyoufeel",
+      "social_twitter_url": "",
+      "social_facebook_url": "",
+      "social_pinterest_url": "",
+      "social_youtube_url": "",
+      "meta_title": "I SEE, YOU FEEL. | ISYF — Premium & Street Fashion",
+      "meta_description": "Discover ISYF — a fashion brand where every piece carries an emotion. Free worldwide shipping over €100."
+    }
+  }
+}

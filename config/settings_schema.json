@@ -1,0 +1,141 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "I SEE, YOU FEEL.",
+    "theme_version": "1.0.0",
+    "theme_author": "GreenEcoGenius OÜ",
+    "theme_documentation_url": "https://iseeyoufeel.com",
+    "theme_support_url": "https://iseeyoufeel.com/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#000000",
+        "info": "Used for buttons, text, and headings."
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary background",
+        "default": "#F7F7F7",
+        "info": "Used for alternate sections like newsletter and subscribe."
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent color",
+        "default": "#E01715",
+        "info": "Used for sale badges and error states."
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Muted text color",
+        "default": "#999999",
+        "info": "Used for secondary text, labels, and captions."
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "playfair_display_n4",
+        "info": "Used for h1, h2 elements."
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body font",
+        "default": "dm_sans_n3",
+        "info": "Used for paragraphs, links, buttons, and inputs."
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_url",
+        "label": "Instagram URL",
+        "default": "https://instagram.com/iseeyoufeel"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_url",
+        "label": "TikTok URL",
+        "default": "https://tiktok.com/@iseeyoufeel"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_url",
+        "label": "X (Twitter) URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_url",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_url",
+        "label": "YouTube URL"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Recommended size: 32×32px PNG."
+      }
+    ]
+  },
+  {
+    "name": "SEO",
+    "settings": [
+      {
+        "type": "text",
+        "id": "meta_title",
+        "label": "Default meta title",
+        "default": "I SEE, YOU FEEL. | ISYF — Premium & Street Fashion"
+      },
+      {
+        "type": "textarea",
+        "id": "meta_description",
+        "label": "Default meta description",
+        "default": "Discover ISYF — a fashion brand where every piece carries an emotion. Free worldwide shipping over €100."
+      }
+    ]
+  }
+]

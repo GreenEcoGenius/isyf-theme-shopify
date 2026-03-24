@@ -1,0 +1,158 @@
+{
+  "general": {
+    "search": "Search",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close",
+    "loading": "Loading…",
+    "share": "Share",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ current }} of {{ total }}"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "added": "Added!",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "price": "Price",
+      "sale_price": "Sale price",
+      "compare_at_price": "Regular price",
+      "quantity": "Quantity",
+      "size": "Size",
+      "color": "Color",
+      "description": "Description",
+      "shipping": "Shipping",
+      "size_guide": "Size Guide",
+      "free_shipping": "Free shipping over €100",
+      "shipping_info": "Free shipping on orders over €100. Europe: 5–10 business days. North America: 7–14 business days. Rest of world: 10–20 business days.",
+      "size_guide_info": "Our pieces run true to size with a relaxed fit. For an oversized look, size up.",
+      "you_might_also_like": "You might also like"
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Collections",
+      "empty": "No products found in this category yet. Check back soon.",
+      "all": "All",
+      "filter": "Filter",
+      "sort": "Sort",
+      "items_count": "{{ count }} products"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your bag",
+      "empty": "Your bag is empty",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "shop_all": "Shop all",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "estimated_total": "Estimated total",
+      "shipping_calculated": "Calculated at checkout",
+      "tax_calculated": "Calculated at checkout",
+      "order_summary": "Order summary",
+      "items_count": "{{ count }} items",
+      "free_shipping_unlocked": "You've unlocked free shipping!",
+      "free_shipping_away": "You're {{ amount }} away from free shipping",
+      "we_accept": "We accept",
+      "terms_notice": "By continuing, I confirm that I have read and accept the Terms of Service and the Privacy Policy."
+    }
+  },
+  "customer": {
+    "login": {
+      "title": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign in",
+      "forgot_password": "Forgot password?",
+      "create_account": "Create account",
+      "no_account": "Don't have an account?"
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "create": "Create",
+      "already_have_account": "Already have an account?",
+      "sign_in": "Sign in"
+    },
+    "account": {
+      "title": "My Account",
+      "orders": "Order history",
+      "addresses": "Addresses",
+      "details": "Account details",
+      "logout": "Log out",
+      "no_orders": "You haven't placed any orders yet."
+    },
+    "reset_password": {
+      "title": "Reset password",
+      "description": "Enter your email and we'll send you a reset link.",
+      "email": "Email",
+      "submit": "Send reset link",
+      "back_to_login": "Back to sign in",
+      "success": "We've sent you a password reset email."
+    }
+  },
+  "newsletter": {
+    "heading": "JOIN THE FEELING",
+    "description": "Subscribe to receive exclusive drops, early access, and stories from the ISYF universe.",
+    "button": "Subscribe",
+    "placeholder": "Enter your email",
+    "success": "Thank you for subscribing!",
+    "error": "Something went wrong. Please try again."
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "menu": "Menu",
+    "search": "Search",
+    "cart": "Cart",
+    "increase_quantity": "Increase quantity",
+    "decrease_quantity": "Decrease quantity",
+    "remove_item": "Remove item",
+    "loading": "Loading",
+    "previous_slide": "Previous slide",
+    "next_slide": "Next slide"
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}",
+      "more_articles": "More from the journal"
+    }
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search products, articles…",
+    "results_for": "Search results for \"{{ terms }}\"",
+    "no_results": "No results found for \"{{ terms }}\". Try a different search term.",
+    "article": "Article",
+    "page": "Page"
+  },
+  "404": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "back_home": "Back to home"
+  },
+  "password": {
+    "title": "Opening soon",
+    "description": "We're putting the finishing touches on our store. Enter the password to get early access.",
+    "placeholder": "Enter password",
+    "submit": "Enter"
+  }
+}
