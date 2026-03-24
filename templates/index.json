@@ -3,7 +3,7 @@
     "announcement": {
       "type": "announcement-bar",
       "settings": {
-        "text": "FREE WORLDWIDE SHIPPING ON ORDERS OVER €100"
+        "text": "FREE WORLDWIDE SHIPPING ON ORDERS OVER 100 EUR"
       }
     },
     "hero": {
@@ -58,7 +58,7 @@
       "type": "image-with-text",
       "settings": {
         "heading": "What I see, you feel.",
-        "text": "<p>Every piece we create carries an emotion. Every design tells a story. I SEE, YOU FEEL. is more than a brand — it's a way to express what words cannot.</p>",
+        "text": "Every piece we create carries an emotion. Every design tells a story. I SEE, YOU FEEL. is more than a brand - it is a way to express what words cannot.",
         "link_text": "Read our story",
         "link_url": "/pages/about"
       }
@@ -109,7 +109,7 @@
         "testimonial_1": {
           "type": "testimonial",
           "settings": {
-            "quote": "The embroidered hoodie is the softest thing I've ever worn. The quality is unreal.",
+            "quote": "The embroidered hoodie is the softest thing I have ever worn. The quality is unreal.",
             "author": "Sara J."
           }
         },
