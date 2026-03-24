@@ -31,7 +31,7 @@
           "type": "category",
           "settings": {
             "title": "WOMEN",
-            "button_label": "SHOP WOMEN",
+            "button_label": "DISCOVER",
             "link": "/collections/women"
           }
         },
@@ -39,7 +39,7 @@
           "type": "category",
           "settings": {
             "title": "MEN",
-            "button_label": "SHOP MEN",
+            "button_label": "DISCOVER",
             "link": "/collections/men"
           }
         },
@@ -47,7 +47,7 @@
           "type": "category",
           "settings": {
             "title": "ACCESSORIES",
-            "button_label": "SHOP ACCESSORIES",
+            "button_label": "DISCOVER",
             "link": "/collections/accessories"
           }
         }
