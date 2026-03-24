@@ -1,35 +1,16 @@
 {%- comment -%}
-  Image with Text — converted from page.tsx brandStory section
+  Brand Story — centered text section
   Uses isyf-brand-story-* classes from isyf-base.css
-  Image left, text right layout with fallback to story-image.jpg
 {%- endcomment -%}
 
 {%- liquid
-  assign story_image = section.settings.image
-  assign heading     = section.settings.heading
-  assign text        = section.settings.text
-  assign link_text   = section.settings.link_text
-  assign link_url    = section.settings.link_url
+  assign heading   = section.settings.heading
+  assign text      = section.settings.text
+  assign link_text = section.settings.link_text
+  assign link_url  = section.settings.link_url
 -%}
 
 <section class="isyf-brand-story">
-  <div class="isyf-brand-story-image-wrap">
-    {%- if story_image != blank -%}
-      <img
-        class="isyf-brand-story-image"
-        src="{{ story_image | image_url: width: 800 }}"
-        alt="{{ story_image.alt | default: heading | escape }}"
-        loading="lazy"
-      >
-    {%- else -%}
-      <img
-        class="isyf-brand-story-image"
-        src="{{ 'story-image.jpg' | asset_url }}"
-        alt="{{ heading | escape }}"
-        loading="lazy"
-      >
-    {%- endif -%}
-  </div>
   <div class="isyf-brand-story-content">
     {%- if heading != blank -%}
       <h2 class="isyf-brand-story-title">{{ heading }}</h2>
@@ -45,14 +26,9 @@
 
 {% schema %}
 {
-  "name": "Image with text",
+  "name": "Brand story",
   "class": "isyf-brand-story-section",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
     {
       "type": "text",
       "id": "heading",
@@ -80,7 +56,7 @@
   ],
   "presets": [
     {
-      "name": "Image with text"
+      "name": "Brand story"
     }
   ]
 }

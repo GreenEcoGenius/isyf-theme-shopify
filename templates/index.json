@@ -50,12 +50,21 @@
             "button_label": "DISCOVER",
             "link": "/collections/accessories"
           }
+        },
+        "cat_rituels": {
+          "type": "category",
+          "settings": {
+            "title": "RITUELS",
+            "button_label": "DISCOVER",
+            "link": "/collections/rituels"
+          }
         }
       },
       "block_order": [
         "cat_women",
         "cat_men",
-        "cat_accessories"
+        "cat_accessories",
+        "cat_rituels"
       ]
     },
     "story": {

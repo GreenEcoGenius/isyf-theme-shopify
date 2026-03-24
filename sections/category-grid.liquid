@@ -1,42 +1,36 @@
 {%- comment -%}
-  Category Grid — converted from page.tsx categoriesGrid
-  Uses isyf-categories-grid / isyf-category-* classes from isyf-base.css
-  Each block is a category card with image, title, and button
+  Category Grid — 4-card grid: Women, Men, Accessories, Rituels
+  Desktop: 4 columns | Tablet & Mobile: 2x2 grid
 {%- endcomment -%}
 
 {%- if section.blocks.size > 0 -%}
   <section class="isyf-categories-grid">
     {%- for block in section.blocks -%}
+      {%- liquid
+        assign fallback_map = 'WOMEN:category-women.jpg,MEN:category-men.jpg,ACCESSORIES:category-accessories.jpg,RITUELS:category-rituels.jpg'
+        assign fallback_img = blank
+        assign pairs = fallback_map | split: ','
+        for pair in pairs
+          assign kv = pair | split: ':'
+          if block.settings.title == kv[0]
+            assign fallback_img = kv[1]
+          endif
+        endfor
+      -%}
       <div class="isyf-category-card" {{ block.shopify_attributes }}>
         {%- if block.settings.image != blank -%}
-          <img
-            class="isyf-category-image"
-            src="{{ block.settings.image | image_url: width: 1200 }}"
-            alt="{{ block.settings.title | escape }}"
-            loading="lazy"
-          >
+          <img class="isyf-category-image" src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+        {%- elsif fallback_img != blank -%}
+          <img class="isyf-category-image" src="{{ fallback_img | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
         {%- else -%}
-          {%- case block.settings.title -%}
-            {%- when 'WOMEN' -%}
-              <img class="isyf-category-image" src="{{ 'category-women.jpg' | asset_url }}" alt="Women" loading="lazy">
-            {%- when 'MEN' -%}
-              <img class="isyf-category-image" src="{{ 'category-men.jpg' | asset_url }}" alt="Men" loading="lazy">
-            {%- when 'ACCESSORIES' -%}
-              <img class="isyf-category-image" src="{{ 'category-accessories.jpg' | asset_url }}" alt="Accessories" loading="lazy">
-            {%- else -%}
-              <div class="isyf-category-image" style="background: #000;"></div>
-          {%- endcase -%}
+          <div class="isyf-category-image" style="background:#000;"></div>
         {%- endif -%}
         <div class="isyf-category-overlay">
           {%- if block.settings.title != blank -%}
             <h3 class="isyf-category-title">{{ block.settings.title }}</h3>
           {%- endif -%}
           {%- if block.settings.button_label != blank -%}
-            {% render 'button',
-              label: block.settings.button_label,
-              variant: 'bright',
-              url: block.settings.link
-            %}
+            {% render 'button', label: block.settings.button_label, variant: 'bright', url: block.settings.link %}
           {%- endif -%}
         </div>
       </div>
@@ -48,7 +42,7 @@
 {
   "name": "Category grid",
   "class": "isyf-category-grid-section",
-  "max_blocks": 6,
+  "max_blocks": 8,
   "settings": [],
   "blocks": [
     {
@@ -102,6 +96,13 @@
           "type": "category",
           "settings": {
             "title": "ACCESSORIES",
+            "button_label": "DISCOVER"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "RITUELS",
             "button_label": "DISCOVER"
           }
         }
