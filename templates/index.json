@@ -52,7 +52,11 @@
           }
         }
       },
-      "block_order": ["cat_women", "cat_men", "cat_accessories"]
+      "block_order": [
+        "cat_women",
+        "cat_men",
+        "cat_accessories"
+      ]
     },
     "story": {
       "type": "image-with-text",
@@ -89,7 +93,10 @@
           }
         }
       },
-      "block_order": ["grid_premium", "grid_feels"]
+      "block_order": [
+        "grid_premium",
+        "grid_feels"
+      ]
     },
     "banner": {
       "type": "full-image-banner",
@@ -128,7 +135,11 @@
           }
         }
       },
-      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ]
     },
     "instagram": {
       "type": "instagram-feed",
@@ -138,13 +149,29 @@
         "instagram_url": "https://instagram.com/iseeyoufeel"
       },
       "blocks": {
-        "ig_1": { "type": "image" },
-        "ig_2": { "type": "image" },
-        "ig_3": { "type": "image" },
-        "ig_4": { "type": "image" },
-        "ig_5": { "type": "image" }
+        "ig_1": {
+          "type": "image"
+        },
+        "ig_2": {
+          "type": "image"
+        },
+        "ig_3": {
+          "type": "image"
+        },
+        "ig_4": {
+          "type": "image"
+        },
+        "ig_5": {
+          "type": "image"
+        }
       },
-      "block_order": ["ig_1", "ig_2", "ig_3", "ig_4", "ig_5"]
+      "block_order": [
+        "ig_1",
+        "ig_2",
+        "ig_3",
+        "ig_4",
+        "ig_5"
+      ]
     },
     "subscribe": {
       "type": "subscribe",
@@ -152,6 +179,10 @@
         "heading": "JOIN THE FEELING",
         "description": "Subscribe to receive exclusive drops, early access, and stories from the ISYF universe."
       }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
     }
   },
   "order": [
@@ -165,6 +196,7 @@
     "banner",
     "testimonials",
     "instagram",
-    "subscribe"
+    "subscribe",
+    "footer"
   ]
 }

@@ -3,7 +3,14 @@
     "main": {
       "type": "page-faq",
       "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "footer"
+  ]
 }

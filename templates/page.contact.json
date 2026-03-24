@@ -3,7 +3,14 @@
     "main": {
       "type": "page-contact",
       "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "footer"
+  ]
 }
