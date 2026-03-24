@@ -1,0 +1,131 @@
+{%- comment -%}
+  FAQ Page — accordion style
+  Uses isyf-faq-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-faq-page">
+  <div class="isyf-faq-content">
+    <h1 class="isyf-faq-title">{{ section.settings.title }}</h1>
+
+    <div class="isyf-faq-list">
+      <div class="isyf-faq-section">
+        <span class="isyf-faq-category-label">Orders</span>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>What payment methods do you accept?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, Klarna, Shop Pay, Bancontact.</p>
+          </details>
+        </div>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>Can I modify or cancel my order?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">Orders can be modified or cancelled within 2 hours of placing them. After that, production begins and changes are no longer possible. Contact us at contact@iseeyoufeel.com as soon as possible.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="isyf-faq-section">
+        <span class="isyf-faq-category-label">Shipping</span>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>Where do you ship?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">We ship worldwide. Free shipping on orders over 100 EUR within Europe. North America and rest of world shipping rates are calculated at checkout.</p>
+          </details>
+        </div>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>How long does delivery take?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">Europe: 5-10 business days. North America: 7-14 business days. Rest of world: 10-20 business days. Print-on-demand items may require an additional 2-5 days for production.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="isyf-faq-section">
+        <span class="isyf-faq-category-label">Returns</span>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>What is your return policy?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">We offer a 30-day return policy on unworn items with original tags attached. To initiate a return, contact us at contact@iseeyoufeel.com with your order number.</p>
+          </details>
+        </div>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>When will I receive my refund?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">Refunds are processed within 5-7 business days after we receive and inspect the returned item. The refund will be credited to your original payment method.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="isyf-faq-section">
+        <span class="isyf-faq-category-label">Products</span>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>What sizes do you offer?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">We offer sizes from XS to 3XL across most of our range. Please refer to our <a href="/pages/size-guide">size guide</a> for detailed measurements by product type.</p>
+          </details>
+        </div>
+
+        <div class="isyf-faq-item">
+          <details>
+            <summary class="isyf-faq-question">
+              <span>Are your products eco-friendly?</span>
+              <span class="isyf-faq-icon">+</span>
+            </summary>
+            <p class="isyf-faq-answer">We work with responsible suppliers and choose sustainable materials whenever possible. Our print-on-demand model for selected items eliminates overproduction and reduces waste.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.isyf-faq-item details').forEach(function(d) {
+    d.addEventListener('toggle', function() {
+      d.querySelector('.isyf-faq-icon').textContent = d.open ? '-' : '+';
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page title",
+      "default": "FAQ"
+    }
+  ]
+}
+{% endschema %}

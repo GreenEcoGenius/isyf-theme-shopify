@@ -1,7 +1,11 @@
 {
   "sections": {
     "main": {
-      "type": "main-collection"
+      "type": "main-collection-filtered",
+      "settings": {
+        "products_per_page": 12,
+        "enable_sort": true
+      }
     }
   },
   "order": ["main"]

@@ -1,0 +1,108 @@
+{%- comment -%}
+  Lookbook Page
+  Uses isyf-lookbook-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-lookbook-page">
+  <div class="isyf-lookbook-hero">
+    <span class="isyf-lookbook-hero-label">{{ section.settings.subtitle }}</span>
+    <h1 class="isyf-lookbook-hero-title">{{ section.settings.title }}</h1>
+    <p class="isyf-lookbook-hero-subtitle">{{ section.settings.description }}</p>
+  </div>
+
+  <div class="isyf-lookbook-grid">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.image != blank -%}
+        <div class="isyf-lookbook-grid-item{% if block.settings.width == 'wide' %} isyf-lookbook-wide{% elsif block.settings.width == 'full' %} isyf-lookbook-full{% endif %}" {{ block.shopify_attributes }}>
+          <img
+            class="isyf-lookbook-grid-image"
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="{{ block.settings.caption | default: 'Lookbook' | escape }}"
+            loading="lazy"
+          >
+          {%- if block.settings.caption != blank -%}
+            <div class="isyf-lookbook-grid-caption">
+              <span>{{ block.settings.caption }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="isyf-lookbook-grid-item{% if block.settings.width == 'wide' %} isyf-lookbook-wide{% elsif block.settings.width == 'full' %} isyf-lookbook-full{% endif %}" style="background: var(--Gray-1);" {{ block.shopify_attributes }}></div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="isyf-lookbook-cta">
+    {% render 'button', label: 'SHOP THE COLLECTION', variant: 'dark', url: '/collections/all' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "LOOKBOOK"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle label",
+      "default": "SS26 COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "See the vision. Feel the collection."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            { "value": "normal", "label": "Normal (1 column)" },
+            { "value": "wide", "label": "Wide (2 columns)" },
+            { "value": "full", "label": "Full width (3 columns)" }
+          ],
+          "default": "normal"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook",
+      "blocks": [
+        { "type": "image", "settings": { "width": "wide" } },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image", "settings": { "width": "wide" } },
+        { "type": "image", "settings": { "width": "full" } },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
