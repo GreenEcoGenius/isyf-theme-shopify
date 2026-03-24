@@ -42,11 +42,21 @@
         </a>
       {%- endfor -%}
     {%- else -%}
+      {%- assign journal_images = 'journal-1.jpg,journal-2.jpg,journal-3.jpg' | split: ',' -%}
+      {%- assign journal_labels = 'Design,Style,Behind the scenes' | split: ',' -%}
+      {%- assign journal_titles = 'The creative process behind ISYF,Building a conscious wardrobe,From studio to your door' | split: ',' -%}
       {%- for i in (1..limit) -%}
+        {%- assign idx = forloop.index0 | modulo: 3 -%}
         <div class="isyf-journal-article">
-          <div class="isyf-journal-article-image" style="background: var(--Gray-1);"></div>
-          <span class="isyf-journal-article-label">Journal</span>
-          <span class="isyf-journal-article-title">Article title {{ i }}</span>
+          <img
+            class="isyf-journal-article-image"
+            src="{{ journal_images[idx] | asset_url }}"
+            alt="{{ journal_titles[idx] | escape }}"
+            loading="lazy"
+            style="object-fit: cover;"
+          >
+          <span class="isyf-journal-article-label">{{ journal_labels[idx] }}</span>
+          <span class="isyf-journal-article-title">{{ journal_titles[idx] }}</span>
           <span class="isyf-journal-article-link">Read more</span>
         </div>
       {%- endfor -%}

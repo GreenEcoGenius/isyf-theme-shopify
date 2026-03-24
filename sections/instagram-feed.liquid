@@ -26,31 +26,25 @@
   </div>
 
   <div class="isyf-instagram-grid">
-    {%- for block in section.blocks -%}
-      {%- if block.settings.image != blank -%}
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
         <div class="isyf-instagram-image-wrapper" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {%- assign img_src = block.settings.image | image_url: width: 480 -%}
+          {%- else -%}
+            {%- assign fallback_idx = forloop.index | at_most: 5 -%}
+            {%- assign img_src = 'ig-' | append: fallback_idx | append: '.jpg' | asset_url -%}
+          {%- endif -%}
           {%- if ig_url != blank -%}
             <a href="{{ ig_url }}" target="_blank" rel="noopener noreferrer">
-              <img
-                class="isyf-instagram-image"
-                src="{{ block.settings.image | image_url: width: 480 }}"
-                alt="{{ block.settings.alt | default: 'Instagram post' | escape }}"
-                loading="lazy"
-              >
+              <img class="isyf-instagram-image" src="{{ img_src }}" alt="{{ block.settings.alt | default: 'Instagram post' | escape }}" loading="lazy">
             </a>
           {%- else -%}
-            <img
-              class="isyf-instagram-image"
-              src="{{ block.settings.image | image_url: width: 480 }}"
-              alt="{{ block.settings.alt | default: 'Instagram post' | escape }}"
-              loading="lazy"
-            >
+            <img class="isyf-instagram-image" src="{{ img_src }}" alt="{{ block.settings.alt | default: 'Instagram post' | escape }}" loading="lazy">
           {%- endif -%}
         </div>
-      {%- endif -%}
-    {%- endfor -%}
-
-    {%- if section.blocks.size == 0 -%}
+      {%- endfor -%}
+    {%- else -%}
       {%- for i in (1..5) -%}
         <div class="isyf-instagram-image-wrapper">
           {%- if ig_url != blank -%}
