@@ -1236,21 +1236,30 @@ p, span, a, button, input, textarea, select, label {
   display: flex;
   gap: 2px;
   padding: 0;
+  margin: 0;
 }
 .isyf-category-card {
-  flex: 1;
-  height: 500px;
+  flex: 1 1 0%;
+  aspect-ratio: 384 / 440;
   position: relative;
   overflow: hidden;
   background-color: #000;
+  margin: 0;
+  padding: 0;
 }
-.isyf-category-image {
+img.isyf-category-image,
+div.isyf-category-image {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
   filter: brightness(0.6);
   transition: transform 0.6s;
 }
@@ -1408,7 +1417,7 @@ p, span, a, button, input, textarea, select, label {
   .isyf-products-row { grid-template-columns: repeat(2, 1fr); }
   .isyf-section-title { font-size: 28px; }
   .isyf-categories-grid { flex-direction: row; }
-  .isyf-category-card { height: 420px; }
+  .isyf-category-card { aspect-ratio: 384 / 440; }
   .isyf-full-banner { height: 400px; }
   .isyf-full-banner-title { font-size: 40px; }
   .isyf-values-section { padding: 64px 24px; }
@@ -1438,7 +1447,7 @@ p, span, a, button, input, textarea, select, label {
   .isyf-section-subtitle { margin: 6px 0 32px; font-size: 13px; }
   .isyf-products-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .isyf-categories-grid { flex-direction: row; gap: 1px; }
-  .isyf-category-card { height: 260px; }
+  .isyf-category-card { aspect-ratio: 384 / 440; }
   .isyf-category-title { font-size: 10px; }
   .isyf-full-banner { height: 340px; }
   .isyf-full-banner-title { font-size: 28px; }
@@ -1462,7 +1471,7 @@ p, span, a, button, input, textarea, select, label {
   .isyf-collection-card { height: 320px; }
   .isyf-collection-title { font-size: 18px; }
   .isyf-products-row { gap: 8px; }
-  .isyf-category-card { height: 240px; }
+  .isyf-category-card { aspect-ratio: 384 / 440; }
   .isyf-full-banner { height: 280px; }
   .isyf-full-banner-title { font-size: 24px; }
 }

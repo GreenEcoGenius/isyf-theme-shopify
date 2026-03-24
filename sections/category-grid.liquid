@@ -9,20 +9,22 @@
     {%- for block in section.blocks -%}
       <div class="isyf-category-card" {{ block.shopify_attributes }}>
         {%- if block.settings.image != blank -%}
-          <div
+          <img
             class="isyf-category-image"
-            style="background-image: url('{{ block.settings.image | image_url: width: 1200 }}');"
-          ></div>
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="{{ block.settings.title | escape }}"
+            loading="lazy"
+          >
         {%- else -%}
           {%- case block.settings.title -%}
             {%- when 'WOMEN' -%}
-              <div class="isyf-category-image" style="background-image: url('{{ 'category-women.jpg' | asset_url }}');"></div>
+              <img class="isyf-category-image" src="{{ 'category-women.jpg' | asset_url }}" alt="Women" loading="lazy">
             {%- when 'MEN' -%}
-              <div class="isyf-category-image" style="background-image: url('{{ 'category-men.jpg' | asset_url }}');"></div>
+              <img class="isyf-category-image" src="{{ 'category-men.jpg' | asset_url }}" alt="Men" loading="lazy">
             {%- when 'ACCESSORIES' -%}
-              <div class="isyf-category-image" style="background-image: url('{{ 'category-accessories.jpg' | asset_url }}');"></div>
+              <img class="isyf-category-image" src="{{ 'category-accessories.jpg' | asset_url }}" alt="Accessories" loading="lazy">
             {%- else -%}
-              <div class="isyf-category-image" style="background: var(--Gray-2);"></div>
+              <div class="isyf-category-image" style="background: #000;"></div>
           {%- endcase -%}
         {%- endif -%}
         <div class="isyf-category-overlay">
