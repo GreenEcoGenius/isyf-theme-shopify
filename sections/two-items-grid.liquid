@@ -14,7 +14,13 @@
             style="background-image: url('{{ block.settings.image | image_url: width: 1400 }}');"
           ></div>
         {%- else -%}
-          <div class="isyf-collection-image" style="background: var(--Gray-2);"></div>
+          {%- if block.settings.title contains 'PREMIUM' -%}
+            <div class="isyf-collection-image" style="background-image: url('{{ 'grid-premium.jpg' | asset_url }}');"></div>
+          {%- elsif block.settings.title contains 'FEELS' -%}
+            <div class="isyf-collection-image" style="background-image: url('{{ 'grid-feels.jpg' | asset_url }}');"></div>
+          {%- else -%}
+            <div class="isyf-collection-image" style="background: var(--Gray-2);"></div>
+          {%- endif -%}
         {%- endif -%}
         <div class="isyf-collection-overlay">
           {%- if block.settings.title != blank -%}

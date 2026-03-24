@@ -14,7 +14,16 @@
             style="background-image: url('{{ block.settings.image | image_url: width: 1200 }}');"
           ></div>
         {%- else -%}
-          <div class="isyf-category-image" style="background: var(--Gray-2);"></div>
+          {%- case block.settings.title -%}
+            {%- when 'WOMEN' -%}
+              <div class="isyf-category-image" style="background-image: url('{{ 'category-women.jpg' | asset_url }}');"></div>
+            {%- when 'MEN' -%}
+              <div class="isyf-category-image" style="background-image: url('{{ 'category-men.jpg' | asset_url }}');"></div>
+            {%- when 'ACCESSORIES' -%}
+              <div class="isyf-category-image" style="background-image: url('{{ 'category-accessories.jpg' | asset_url }}');"></div>
+            {%- else -%}
+              <div class="isyf-category-image" style="background: var(--Gray-2);"></div>
+          {%- endcase -%}
         {%- endif -%}
         <div class="isyf-category-overlay">
           {%- if block.settings.title != blank -%}
