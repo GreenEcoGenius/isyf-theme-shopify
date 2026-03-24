@@ -1,0 +1,83 @@
+{%- comment -%}
+  Featured Collection — converted from page.tsx "Best sellers" / "THE SELECTION"
+  Uses isyf-section-* and isyf-products-row classes from isyf-base.css
+  Renders product-card.liquid snippet for each product
+{%- endcomment -%}
+
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit      = section.settings.products_to_show
+  assign heading    = section.settings.heading
+  assign subheading = section.settings.subheading
+-%}
+
+<section class="isyf-section">
+  {%- if heading != blank -%}
+    <h2 class="isyf-section-title">{{ heading }}</h2>
+  {%- endif -%}
+  {%- if subheading != blank -%}
+    <p class="isyf-section-subtitle">{{ subheading }}</p>
+  {%- endif -%}
+
+  <div class="isyf-products-row">
+    {%- if collection != blank -%}
+      {%- for product in collection.products limit: limit -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..limit) -%}
+        <div class="isyf-product-card">
+          <div class="isyf-product-card-image-wrapper">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <div class="isyf-product-card-info">
+            <span class="isyf-product-card-name">Sample Product {{ i }}</span>
+            <div class="isyf-product-card-price-row">
+              <span class="isyf-product-card-price">€00.00</span>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "class": "isyf-featured-collection-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE SELECTION"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our curated picks"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

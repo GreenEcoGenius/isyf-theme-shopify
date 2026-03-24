@@ -1,0 +1,30 @@
+{%- comment -%}
+  Announcement Bar — converted from page.tsx announcementBar
+  Uses isyf-announcement-bar class from isyf-base.css
+{%- endcomment -%}
+
+{%- if section.settings.text != blank -%}
+  <div class="isyf-announcement-bar">
+    {{ section.settings.text }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "isyf-announcement-bar-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "FREE WORLDWIDE SHIPPING ON ORDERS OVER €100"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar"
+    }
+  ]
+}
+{% endschema %}

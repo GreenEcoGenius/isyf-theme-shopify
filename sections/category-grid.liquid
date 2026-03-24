@@ -1,0 +1,101 @@
+{%- comment -%}
+  Category Grid — converted from page.tsx categoriesGrid
+  Uses isyf-categories-grid / isyf-category-* classes from isyf-base.css
+  Each block is a category card with image, title, and button
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  <section class="isyf-categories-grid">
+    {%- for block in section.blocks -%}
+      <div class="isyf-category-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div
+            class="isyf-category-image"
+            style="background-image: url('{{ block.settings.image | image_url: width: 1200 }}');"
+          ></div>
+        {%- else -%}
+          <div class="isyf-category-image" style="background: var(--Gray-2);"></div>
+        {%- endif -%}
+        <div class="isyf-category-overlay">
+          {%- if block.settings.title != blank -%}
+            <h3 class="isyf-category-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            {% render 'button',
+              label: block.settings.button_label,
+              variant: 'bright',
+              url: block.settings.link
+            %}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Category grid",
+  "class": "isyf-category-grid-section",
+  "max_blocks": 6,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "CATEGORY"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "DISCOVER"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category grid",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "WOMEN",
+            "button_label": "SHOP WOMEN"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "MEN",
+            "button_label": "SHOP MEN"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "ACCESSORIES",
+            "button_label": "SHOP ACCESSORIES"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
