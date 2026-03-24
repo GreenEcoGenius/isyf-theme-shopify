@@ -1,5 +1,6 @@
 {%- comment -%}
-  ISYF Header — converted from Navigation.tsx
+  ISYF Header — hamburger + centered logo + right links
+  All navigation lives in the drawer menu.
   Uses isyf-nav-* classes from isyf-base.css
 {%- endcomment -%}
 
@@ -9,24 +10,82 @@
 
 <style>
   .isyf-nav {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--White);
+    border-bottom: var(--border-1);
+    padding: 0 var(--padding-40);
+    z-index: 100;
+    box-sizing: border-box;
   }
-  .isyf-nav-links,
-  .isyf-nav-links-right {
-    flex: 0 0 auto;
-    max-width: calc(50% - 100px);
+  .isyf-nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
   }
-  .isyf-nav-logo-link {
+  .isyf-nav-hamburger-line {
+    width: 22px;
+    height: 1px;
+    background-color: var(--Black);
+  }
+  .isyf-header-logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    text-decoration: none;
     z-index: 1;
   }
-  .isyf-nav-mega-menu {
-    display: none;
+  .isyf-header-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--Black);
+    white-space: nowrap;
   }
-  .isyf-nav-menu-item:hover .isyf-nav-mega-menu {
+  .isyf-header-right {
     display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .isyf-header-right .isyf-nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--Black);
+    cursor: pointer;
+    transition: opacity 0.3s;
+    background: none;
+    border: none;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .isyf-header-right .isyf-nav-link:hover {
+    opacity: 0.5;
+  }
+  .isyf-header-mobile-bag {
+    display: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--Black);
   }
   .isyf-nav-drawer-sub-menu {
     display: none;
@@ -34,66 +93,27 @@
   .isyf-nav-drawer-group.is-expanded .isyf-nav-drawer-sub-menu {
     display: flex;
   }
+  @media (max-width: 1024px) {
+    .isyf-nav { padding: 0 24px; }
+  }
+  @media (max-width: 768px) {
+    .isyf-header-right { display: none; }
+    .isyf-header-mobile-bag { display: block; }
+    .isyf-header-logo-text { font-size: 14px; }
+    .isyf-nav-drawer,
+    .isyf-nav-drawer.isyf-nav-drawer-open { width: 100%; max-width: 100%; }
+  }
 </style>
 
 <header class="isyf-nav" data-header>
-  {%- comment -%} Hamburger (visible all screens, opens drawer) {%- endcomment -%}
+  {%- comment -%} Left: hamburger — always visible {%- endcomment -%}
   <button class="isyf-nav-hamburger" data-drawer-toggle aria-label="Menu" aria-expanded="false">
     <span class="isyf-nav-hamburger-line"></span>
     <span class="isyf-nav-hamburger-line"></span>
   </button>
 
-  {%- comment -%} Desktop left links {%- endcomment -%}
-  <nav class="isyf-nav-links">
-    {%- comment -%} Women — mega menu {%- endcomment -%}
-    <div class="isyf-nav-menu-item">
-      <a href="/collections/women" class="isyf-nav-link">Women</a>
-      <div class="isyf-nav-mega-menu">
-        <div class="isyf-nav-mega-col">
-          <span class="isyf-nav-mega-title">ISYF Premium</span>
-          <a href="/collections/women-premium-sweats" class="isyf-nav-mega-link">Sweats &amp; Hoodies</a>
-          <a href="/collections/women-premium-tshirts" class="isyf-nav-mega-link">T-shirts</a>
-          <a href="/collections/women-premium-limited" class="isyf-nav-mega-link">Limited Drops</a>
-        </div>
-        <div class="isyf-nav-mega-col">
-          <span class="isyf-nav-mega-title">ISYF Feels</span>
-          <a href="/collections/women-feels-tshirts" class="isyf-nav-mega-link">T-shirts à message</a>
-          <a href="/collections/women-feels-sweats" class="isyf-nav-mega-link">Sweats imprimés</a>
-          <a href="/collections/women-feels-new" class="isyf-nav-mega-link">New Arrivals</a>
-        </div>
-        <div class="isyf-nav-mega-col">
-          <a href="/collections/women" class="isyf-nav-mega-link isyf-nav-mega-link-bold">Shop All Women</a>
-        </div>
-      </div>
-    </div>
-
-    {%- comment -%} Men — mega menu {%- endcomment -%}
-    <div class="isyf-nav-menu-item">
-      <a href="/collections/men" class="isyf-nav-link">Men</a>
-      <div class="isyf-nav-mega-menu">
-        <div class="isyf-nav-mega-col">
-          <span class="isyf-nav-mega-title">ISYF Premium</span>
-          <a href="/collections/men-premium-sweats" class="isyf-nav-mega-link">Sweats &amp; Hoodies</a>
-          <a href="/collections/men-premium-tshirts" class="isyf-nav-mega-link">T-shirts</a>
-          <a href="/collections/men-premium-limited" class="isyf-nav-mega-link">Limited Drops</a>
-        </div>
-        <div class="isyf-nav-mega-col">
-          <span class="isyf-nav-mega-title">ISYF Feels</span>
-          <a href="/collections/men-feels-tshirts" class="isyf-nav-mega-link">T-shirts à message</a>
-          <a href="/collections/men-feels-sweats" class="isyf-nav-mega-link">Sweats imprimés</a>
-          <a href="/collections/men-feels-new" class="isyf-nav-mega-link">New Arrivals</a>
-        </div>
-        <div class="isyf-nav-mega-col">
-          <a href="/collections/men" class="isyf-nav-mega-link isyf-nav-mega-link-bold">Shop All Men</a>
-        </div>
-      </div>
-    </div>
-
-    <a href="/collections/accessories" class="isyf-nav-link">Accessories</a>
-  </nav>
-
-  {%- comment -%} Center logo {%- endcomment -%}
-  <a href="/" class="isyf-nav-logo-link">
+  {%- comment -%} Center: logo {%- endcomment -%}
+  <a href="/" class="isyf-header-logo">
     {%- if logo != blank -%}
       <img
         src="{{ logo | image_url: width: 200 }}"
@@ -104,12 +124,12 @@
         style="height: 20px; width: auto;"
       >
     {%- else -%}
-      <span class="isyf-nav-logo-text">{{ shop.name }}</span>
+      <span class="isyf-header-logo-text">{{ shop.name }}</span>
     {%- endif -%}
   </a>
 
-  {%- comment -%} Desktop right links {%- endcomment -%}
-  <nav class="isyf-nav-links-right">
+  {%- comment -%} Right: account, search, bag (desktop) {%- endcomment -%}
+  <nav class="isyf-header-right">
     <a href="{{ routes.account_url }}" class="isyf-nav-link">
       {%- if customer -%}Account{%- else -%}Sign in{%- endif -%}
     </a>
@@ -117,12 +137,12 @@
     <a href="{{ routes.cart_url }}" class="isyf-nav-link">Bag ({{ cart.item_count }})</a>
   </nav>
 
-  {%- comment -%} Mobile bag link (shown only at 768px) {%- endcomment -%}
-  <a href="{{ routes.cart_url }}" class="isyf-nav-mobile-bag">Bag ({{ cart.item_count }})</a>
+  {%- comment -%} Right: bag only (mobile) {%- endcomment -%}
+  <a href="{{ routes.cart_url }}" class="isyf-header-mobile-bag">Bag ({{ cart.item_count }})</a>
 </header>
 
-{%- comment -%} ===== Drawer menu ===== {%- endcomment -%}
-<nav class="isyf-nav-drawer" data-drawer aria-label="Mobile navigation">
+{%- comment -%} ===== Drawer menu (all navigation lives here) ===== {%- endcomment -%}
+<nav class="isyf-nav-drawer" data-drawer aria-label="Navigation">
   <div class="isyf-nav-drawer-header">
     <span class="isyf-nav-drawer-section-title">Menu</span>
     <button class="isyf-nav-drawer-close" data-drawer-close aria-label="Close menu">&times;</button>
