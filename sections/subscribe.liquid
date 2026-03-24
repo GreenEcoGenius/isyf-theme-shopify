@@ -1,0 +1,74 @@
+{%- comment -%}
+  Subscribe / Newsletter — converted from SubscribeSection.tsx + page.tsx newsletter
+  Uses isyf-subscribe-* classes from isyf-base.css
+  Uses Shopify {% form 'customer' %} for email capture
+{%- endcomment -%}
+
+{%- liquid
+  assign heading     = section.settings.heading
+  assign description = section.settings.description
+-%}
+
+<section class="isyf-subscribe">
+  {%- if heading != blank -%}
+    <h2 class="isyf-subscribe-title">{{ heading }}</h2>
+  {%- endif -%}
+  {%- if description != blank -%}
+    <p class="isyf-subscribe-description">{{ description }}</p>
+  {%- endif -%}
+
+  {%- form 'customer', id: 'isyf-subscribe-form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    {%- if form.errors -%}
+      <p style="color: var(--Red); font-size: 13px; margin-bottom: 12px;">
+        {{ form.errors.translated_fields['email'] | capitalize }}
+        {{ form.errors.messages['email'] }}
+      </p>
+    {%- endif -%}
+    {%- if form.posted_successfully? -%}
+      <p style="font-size: 14px; font-weight: 300; color: var(--Black); margin-bottom: 12px;">
+        Thank you for subscribing!
+      </p>
+    {%- else -%}
+      <div class="isyf-subscribe-input-row">
+        <input
+          class="isyf-subscribe-field"
+          type="email"
+          name="contact[email]"
+          placeholder="Enter your email"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+          {%- if form.errors %} value="{{ form.email }}"{% endif %}
+        >
+        <button type="submit" class="isyf-subscribe-submit" aria-label="Subscribe">&rarr;</button>
+      </div>
+    {%- endif -%}
+  {%- endform -%}
+</section>
+
+{% schema %}
+{
+  "name": "Subscribe",
+  "class": "isyf-subscribe-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "JOIN THE FEELING"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Subscribe to receive exclusive drops, early access, and stories from the ISYF universe."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe"
+    }
+  ]
+}
+{% endschema %}

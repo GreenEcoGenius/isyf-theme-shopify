@@ -1,0 +1,91 @@
+{%- comment -%}
+  Testimonials — converted from TestimonialsSection.tsx
+  Uses isyf-testimonials-* classes from isyf-base.css
+{%- endcomment -%}
+
+{%- assign heading = section.settings.heading -%}
+
+<section class="isyf-testimonials">
+  {%- if heading != blank -%}
+    <h2 class="isyf-testimonials-title">{{ heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="isyf-testimonials-grid">
+      {%- for block in section.blocks -%}
+        <div class="isyf-testimonials-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.quote != blank -%}
+            <p class="isyf-testimonials-quote">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+          {%- endif -%}
+          {%- if block.settings.author != blank -%}
+            <span class="isyf-testimonials-author">{{ block.settings.author }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "isyf-testimonials-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT THEY SAY"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The embroidered hoodie is the softest thing I've ever worn."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Sara J."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The embroidered hoodie is the softest thing I've ever worn. The quality is unreal.",
+            "author": "Sara J."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love that every piece has a message. ISYF FEELS tees are my go-to.",
+            "author": "Alex M."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally a brand that gets it. Premium quality without the pretentious price tag.",
+            "author": "Kim L."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+{%- comment -%}
+  Two Items Grid — converted from page.tsx collectionsGrid
+  Uses isyf-collection-* classes from isyf-base.css
+  Two side-by-side cards with background images, title overlays, and buttons
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  <section class="isyf-collections-grid">
+    {%- for block in section.blocks -%}
+      <div class="isyf-collection-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div
+            class="isyf-collection-image"
+            style="background-image: url('{{ block.settings.image | image_url: width: 1400 }}');"
+          ></div>
+        {%- else -%}
+          <div class="isyf-collection-image" style="background: var(--Gray-2);"></div>
+        {%- endif -%}
+        <div class="isyf-collection-overlay">
+          {%- if block.settings.title != blank -%}
+            <h2 class="isyf-collection-title">{{ block.settings.title }}</h2>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            {% render 'button',
+              label: block.settings.button_label,
+              variant: 'bright',
+              url: block.settings.link
+            %}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Two items grid",
+  "class": "isyf-two-items-section",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "COLLECTION"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "DISCOVER"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two items grid",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "ISYF PREMIUM",
+            "button_label": "DISCOVER"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "ISYF FEELS",
+            "button_label": "DISCOVER"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

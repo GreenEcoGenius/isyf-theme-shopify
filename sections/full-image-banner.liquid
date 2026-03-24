@@ -1,0 +1,75 @@
+{%- comment -%}
+  Full Image Banner — converted from page.tsx fullBanner section
+  Uses isyf-full-banner-* classes from isyf-base.css
+{%- endcomment -%}
+
+{%- liquid
+  assign bg_image   = section.settings.image
+  assign subtitle   = section.settings.subtitle
+  assign heading    = section.settings.heading
+  assign btn_label  = section.settings.button_label
+  assign btn_url    = section.settings.button_url
+-%}
+
+<section
+  class="isyf-full-banner"
+  {%- if bg_image != blank %}
+    style="background-image: url('{{ bg_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;"
+  {%- endif %}
+>
+  <div class="isyf-full-banner-overlay"></div>
+  <div class="isyf-full-banner-content">
+    {%- if subtitle != blank -%}
+      <span class="isyf-full-banner-subtitle">{{ subtitle }}</span>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="isyf-full-banner-title">{{ heading }}</h2>
+    {%- endif -%}
+    {%- if btn_label != blank -%}
+      {% render 'button', label: btn_label, variant: 'bright', url: btn_url %}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Full image banner",
+  "class": "isyf-full-banner-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Every design carries a message"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FEEL SOMETHING"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full image banner"
+    }
+  ]
+}
+{% endschema %}

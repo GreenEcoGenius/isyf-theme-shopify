@@ -1,0 +1,89 @@
+{%- comment -%}
+  Article Grid — "From the journal" section
+  Uses isyf-journal-* classes from isyf-base.css
+  Pulls articles from Shopify blog
+{%- endcomment -%}
+
+{%- liquid
+  assign heading     = section.settings.heading
+  assign blog_handle = section.settings.blog
+  assign limit       = section.settings.articles_to_show
+-%}
+
+{%- if blog_handle != blank -%}
+  {%- assign blog_obj = blogs[blog_handle] -%}
+{%- else -%}
+  {%- assign blog_obj = blogs['journal'] -%}
+{%- endif -%}
+
+<section class="isyf-section">
+  {%- if heading != blank -%}
+    <h2 class="isyf-section-title">{{ heading }}</h2>
+  {%- endif -%}
+
+  <div class="isyf-journal-articles-grid" style="width: 100%;">
+    {%- if blog_obj != blank and blog_obj.articles_count > 0 -%}
+      {%- for article in blog_obj.articles limit: limit -%}
+        <a href="{{ article.url }}" class="isyf-journal-article">
+          {%- if article.image != blank -%}
+            <img
+              class="isyf-journal-article-image"
+              src="{{ article.image | image_url: width: 600 }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              loading="lazy"
+              style="object-fit: cover;"
+            >
+          {%- endif -%}
+          {%- if article.tags.size > 0 -%}
+            <span class="isyf-journal-article-label">{{ article.tags.first }}</span>
+          {%- endif -%}
+          <span class="isyf-journal-article-title">{{ article.title }}</span>
+          <span class="isyf-journal-article-link">Read more</span>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..limit) -%}
+        <div class="isyf-journal-article">
+          <div class="isyf-journal-article-image" style="background: var(--Gray-1);"></div>
+          <span class="isyf-journal-article-label">Journal</span>
+          <span class="isyf-journal-article-title">Article title {{ i }}</span>
+          <span class="isyf-journal-article-link">Read more</span>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article grid",
+  "class": "isyf-article-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FROM THE JOURNAL"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "articles_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "Articles to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article grid"
+    }
+  ]
+}
+{% endschema %}
