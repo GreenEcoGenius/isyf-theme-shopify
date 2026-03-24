@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-cookies",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "footer"
+  ]
+}

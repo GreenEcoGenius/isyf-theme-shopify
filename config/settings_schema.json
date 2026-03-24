@@ -80,7 +80,7 @@
         "type": "text",
         "id": "social_instagram_url",
         "label": "Instagram URL",
-        "default": "https://instagram.com/iseeyoufeel"
+        "default": "https://instagram.com/isyf_off"
       },
       {
         "type": "text",
