@@ -55,10 +55,10 @@
         <div class="isyf-instagram-image-wrapper">
           {%- if ig_url != blank -%}
             <a href="{{ ig_url }}" target="_blank" rel="noopener noreferrer">
-              <img class="isyf-instagram-image" src="{{ 'instagram-' | append: i | append: '.jpg' | asset_url }}" alt="Instagram post" loading="lazy">
+              <img class="isyf-instagram-image" src="{{ 'ig-' | append: i | append: '.jpg' | asset_url }}" alt="Instagram post" loading="lazy">
             </a>
           {%- else -%}
-            <img class="isyf-instagram-image" src="{{ 'instagram-' | append: i | append: '.jpg' | asset_url }}" alt="Instagram post" loading="lazy">
+            <img class="isyf-instagram-image" src="{{ 'ig-' | append: i | append: '.jpg' | asset_url }}" alt="Instagram post" loading="lazy">
           {%- endif -%}
         </div>
       {%- endfor -%}
