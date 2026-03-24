@@ -1,0 +1,111 @@
+{%- comment -%}
+  ISYF Footer — converted from Footer.tsx
+  Uses isyf-footer-* classes from isyf-base.css
+{%- endcomment -%}
+
+<footer class="isyf-footer">
+  <div class="isyf-footer-top">
+    {%- comment -%} Brand column {%- endcomment -%}
+    <div class="isyf-footer-column isyf-footer-brand-column">
+      <a href="/" class="isyf-footer-logo">
+        {%- if section.settings.logo != blank -%}
+          <img
+            src="{{ section.settings.logo | image_url: width: 200 }}"
+            alt="{{ shop.name }}"
+            loading="lazy"
+            style="height: 18px; width: auto;"
+          >
+        {%- else -%}
+          {{ shop.name }}
+        {%- endif -%}
+      </a>
+      <div class="isyf-footer-social-links">
+        {%- if section.settings.social_instagram != blank -%}
+          <a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="isyf-footer-social-link">Instagram</a>
+        {%- endif -%}
+        {%- if section.settings.social_tiktok != blank -%}
+          <a href="{{ section.settings.social_tiktok }}" target="_blank" rel="noopener noreferrer" class="isyf-footer-social-link">TikTok</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Shop column {%- endcomment -%}
+    <div class="isyf-footer-column">
+      <span class="isyf-footer-column-title">Shop</span>
+      <div class="isyf-footer-column-links">
+        <a href="/collections/women" class="isyf-footer-column-link">Women</a>
+        <a href="/collections/men" class="isyf-footer-column-link">Men</a>
+        <a href="/collections/accessories" class="isyf-footer-column-link">Accessories</a>
+        <a href="/collections/new-arrivals" class="isyf-footer-column-link">New Arrivals</a>
+        <a href="/collections/sale" class="isyf-footer-column-link">Sale</a>
+      </div>
+    </div>
+
+    {%- comment -%} Support column {%- endcomment -%}
+    <div class="isyf-footer-column">
+      <span class="isyf-footer-column-title">Support</span>
+      <div class="isyf-footer-column-links">
+        <a href="/pages/faq" class="isyf-footer-column-link">FAQ</a>
+        <a href="/policies/shipping-policy" class="isyf-footer-column-link">Shipping &amp; Returns</a>
+        <a href="/pages/size-guide" class="isyf-footer-column-link">Size Guide</a>
+        <a href="/pages/contact" class="isyf-footer-column-link">Contact</a>
+      </div>
+    </div>
+
+    {%- comment -%} Company column {%- endcomment -%}
+    <div class="isyf-footer-column">
+      <span class="isyf-footer-column-title">Company</span>
+      <div class="isyf-footer-column-links">
+        <a href="/pages/about" class="isyf-footer-column-link">Our Story</a>
+        <a href="/pages/lookbook" class="isyf-footer-column-link">Lookbook</a>
+        <a href="/pages/legal" class="isyf-footer-column-link">Legal Notice</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="isyf-footer-divider"></div>
+
+  <div class="isyf-footer-bottom">
+    <span class="isyf-footer-copyright">&copy; {{ 'now' | date: '%Y' }} I SEE, YOU FEEL. &mdash; GreenEcoGenius O&Uuml;</span>
+    <div class="isyf-footer-legal-links">
+      <a href="/policies/terms-of-service" class="isyf-footer-legal-link">Terms of service</a>
+      <a href="/policies/privacy-policy" class="isyf-footer-legal-link">Privacy policy</a>
+      <button type="button" class="isyf-footer-legal-link" data-cc="c-settings">Cookies settings</button>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "isyf-footer-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo",
+      "info": "Falls back to shop name if empty."
+    },
+    {
+      "type": "header",
+      "content": "Social media"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram",
+      "label": "Instagram URL",
+      "default": "https://instagram.com/iseeyoufeel"
+    },
+    {
+      "type": "url",
+      "id": "social_tiktok",
+      "label": "TikTok URL",
+      "default": "https://tiktok.com/@iseeyoufeel"
+    }
+  ]
+}
+{% endschema %}
