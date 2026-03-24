@@ -1,0 +1,72 @@
+{%- comment -%}
+  Main Search — search form + results grid
+  Uses isyf-shop-* / isyf-page-layout-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-page-layout">
+  <div class="isyf-page-layout-content">
+    <h1 class="isyf-page-layout-title">
+      {%- if search.performed -%}
+        Search results for &ldquo;{{ search.terms | escape }}&rdquo;
+      {%- else -%}
+        Search
+      {%- endif -%}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" style="margin-bottom: 48px;">
+      <div style="display: flex; align-items: center; border-bottom: var(--border-3); padding-bottom: var(--padding-8); max-width: 480px;">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search products, articles..."
+          class="isyf-search-input"
+          autofocus
+        >
+        <button type="submit" style="background: none; border: none; font-size: 18px; cursor: pointer; color: var(--Black); padding: 0;">&rarr;</button>
+      </div>
+      <input type="hidden" name="type" value="product,article,page">
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <div class="isyf-shop-product-grid">
+          {%- for result in search.results -%}
+            {%- if result.object_type == 'product' -%}
+              {% render 'product-card', product: result %}
+            {%- elsif result.object_type == 'article' -%}
+              <a href="{{ result.url }}" class="isyf-journal-article">
+                {%- if result.image -%}
+                  <img
+                    class="isyf-journal-article-image"
+                    src="{{ result.image | image_url: width: 400 }}"
+                    alt="{{ result.title | escape }}"
+                    loading="lazy"
+                    style="object-fit: cover;"
+                  >
+                {%- endif -%}
+                <span class="isyf-journal-article-label">Article</span>
+                <span class="isyf-journal-article-title">{{ result.title }}</span>
+              </a>
+            {%- elsif result.object_type == 'page' -%}
+              <a href="{{ result.url }}" class="isyf-journal-article" style="justify-content: center;">
+                <span class="isyf-journal-article-label">Page</span>
+                <span class="isyf-journal-article-title">{{ result.title }}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="isyf-shop-empty-text">No results found for &ldquo;{{ search.terms | escape }}&rdquo;. Try a different search term.</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

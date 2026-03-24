@@ -1,0 +1,21 @@
+{%- comment -%}
+  Main Page — generic static page
+  Uses isyf-page-layout-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-page-layout">
+  <div class="isyf-page-layout-content">
+    <h1 class="isyf-page-layout-title">{{ page.title }}</h1>
+    <div class="isyf-legal-paragraph">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

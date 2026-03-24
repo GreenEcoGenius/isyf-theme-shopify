@@ -1,0 +1,56 @@
+{%- comment -%}
+  Main Blog — articles grid
+  Uses isyf-journal-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-journal-page">
+  <section class="isyf-journal-content">
+    <h1 class="isyf-journal-title">{{ blog.title }}</h1>
+
+    {%- paginate blog.articles by 9 -%}
+      {%- if blog.articles.size > 0 -%}
+        <div class="isyf-journal-articles-grid">
+          {%- for article in blog.articles -%}
+            <a href="{{ article.url }}" class="isyf-journal-article">
+              {%- if article.image != blank -%}
+                <img
+                  class="isyf-journal-article-image"
+                  src="{{ article.image | image_url: width: 600 }}"
+                  alt="{{ article.image.alt | default: article.title | escape }}"
+                  loading="lazy"
+                  style="object-fit: cover;"
+                >
+              {%- endif -%}
+              {%- if article.tags.size > 0 -%}
+                <span class="isyf-journal-article-label">{{ article.tags.first }}</span>
+              {%- endif -%}
+              <span class="isyf-journal-article-title">{{ article.title }}</span>
+              <span class="isyf-journal-article-link">Read more</span>
+            </a>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div style="display: flex; justify-content: center; gap: 8px; margin-top: 48px;">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="isyf-btn isyf-btn-dark">&larr; Previous</a>
+            {%- endif -%}
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="isyf-btn isyf-btn-dark">Next &rarr;</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <p class="isyf-shop-empty-text">No articles published yet.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

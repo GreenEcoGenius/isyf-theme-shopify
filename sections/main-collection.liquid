@@ -1,0 +1,79 @@
+{%- comment -%}
+  Main Collection — converted from app/shop/ShopContent.tsx
+  Uses isyf-shop-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-shop-page">
+  <section class="isyf-shop-content">
+    <h1 class="isyf-shop-title">{{ collection.title }}</h1>
+
+    {%- if collection.description != blank -%}
+      <p class="isyf-section-subtitle">{{ collection.description }}</p>
+    {%- endif -%}
+
+    {%- comment -%} Filter bar — tag-based filtering {%- endcomment -%}
+    <div class="isyf-shop-filter-bar">
+      <a
+        href="{{ collection.url }}"
+        class="isyf-shop-filter-btn{% unless current_tags %} isyf-shop-filter-btn-active{% endunless %}"
+      >All</a>
+      {%- for tag in collection.all_tags -%}
+        {%- if tag == 'Women' or tag == 'Men' or tag == 'Accessories' or tag == 'ISYF Premium' or tag == 'ISYF FEELS' -%}
+          {%- if current_tags contains tag -%}
+            <a href="{{ collection.url }}" class="isyf-shop-filter-btn isyf-shop-filter-btn-active">{{ tag }}</a>
+          {%- else -%}
+            <a href="{{ collection.url }}/{{ tag | handle }}" class="isyf-shop-filter-btn">{{ tag }}</a>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="isyf-shop-product-grid">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div style="display: flex; justify-content: center; gap: 8px; margin-top: 48px;">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="isyf-btn isyf-btn-dark">&larr; Previous</a>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="isyf-shop-filter-btn">{{ part.title }}</a>
+              {%- else -%}
+                <span class="isyf-shop-filter-btn isyf-shop-filter-btn-active">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="isyf-btn isyf-btn-dark">Next &rarr;</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <p class="isyf-shop-empty-text">No products found in this category yet. Check back soon.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Collection products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 6,
+      "max": 48,
+      "step": 3,
+      "default": 12,
+      "label": "Products per page"
+    }
+  ]
+}
+{% endschema %}

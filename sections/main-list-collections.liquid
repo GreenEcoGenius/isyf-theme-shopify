@@ -1,0 +1,48 @@
+{%- comment -%}
+  List Collections — grid of all collections
+  Uses isyf-shop-* / isyf-collection-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-shop-page">
+  <section class="isyf-shop-content">
+    <h1 class="isyf-shop-title">Collections</h1>
+
+    <div class="isyf-shop-product-grid">
+      {%- for collection in collections -%}
+        {%- unless collection.handle == 'all' -%}
+          <a href="{{ collection.url }}" class="isyf-product-card">
+            <div class="isyf-product-card-image-wrapper">
+              {%- if collection.image != blank -%}
+                <img
+                  class="isyf-product-card-image"
+                  src="{{ collection.image | image_url: width: 600 }}"
+                  alt="{{ collection.title | escape }}"
+                  loading="lazy"
+                >
+              {%- elsif collection.products.first.featured_image != blank -%}
+                <img
+                  class="isyf-product-card-image"
+                  src="{{ collection.products.first.featured_image | image_url: width: 600 }}"
+                  alt="{{ collection.title | escape }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </div>
+            <div class="isyf-product-card-info">
+              <span class="isyf-product-card-name">{{ collection.title }}</span>
+              <span class="isyf-product-card-price">{{ collection.products_count }} products</span>
+            </div>
+          </a>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

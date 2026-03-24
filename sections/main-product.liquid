@@ -1,0 +1,199 @@
+{%- comment -%}
+  Main Product — converted from app/product/[slug]/page.tsx
+  Uses isyf-product-* classes from isyf-base.css
+{%- endcomment -%}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_image = current_variant.image | default: product.featured_image
+-%}
+
+<div class="isyf-product-page">
+  <section class="isyf-product-section">
+    <div class="isyf-product-container">
+      {%- comment -%} Image gallery {%- endcomment -%}
+      <div class="isyf-product-thumbnails">
+        <div class="isyf-product-main-image" id="isyf-main-image">
+          {%- if featured_image != blank -%}
+            <img
+              class="isyf-product-main-img"
+              src="{{ featured_image | image_url: width: 1000 }}"
+              alt="{{ featured_image.alt | default: product.title | escape }}"
+              id="isyf-main-img"
+            >
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            {%- for image in product.images -%}
+              <button
+                type="button"
+                data-thumb
+                data-src="{{ image | image_url: width: 1000 }}"
+                style="width: 72px; height: 96px; padding: 0; border: var(--border-1); background: none; cursor: pointer; overflow: hidden;{% if image == featured_image %} border-color: var(--Black);{% endif %}"
+              >
+                <img
+                  src="{{ image | image_url: width: 150 }}"
+                  alt="{{ image.alt | default: product.title | escape }}"
+                  style="width: 100%; height: 100%; object-fit: cover;"
+                  loading="lazy"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Product details {%- endcomment -%}
+      <div class="isyf-product-details">
+        {%- if product.type != blank -%}
+          <span class="isyf-product-category">{{ product.type }}</span>
+        {%- endif -%}
+        <h1 class="isyf-product-name">{{ product.title }}</h1>
+        <span class="isyf-product-price">
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <s style="color: var(--Gray-3); font-weight: 300;">{{ current_variant.compare_at_price | money }}</s>&nbsp;
+          {%- endif -%}
+          {{ current_variant.price | money }}
+        </span>
+
+        {%- if product.description != blank -%}
+          <p class="isyf-product-description">{{ product.description }}</p>
+        {%- endif -%}
+
+        {%- comment -%} Variant form {%- endcomment -%}
+        {%- form 'product', product, id: 'isyf-product-form', data-product-form: '' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" id="isyf-variant-id">
+
+          {%- for option in product.options_with_values -%}
+            <div class="isyf-product-option-group">
+              <span class="isyf-product-option-label">{{ option.name }}</span>
+              <div class="isyf-product-size-options">
+                {%- for value in option.values -%}
+                  <button
+                    type="button"
+                    class="isyf-product-size-option{% if option.selected_value == value %} isyf-product-size-option-active{% endif %}"
+                    data-option-name="{{ option.name }}"
+                    data-option-value="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <div class="isyf-product-option-group">
+            <span class="isyf-product-option-label">Quantity</span>
+            <div class="isyf-product-qty-picker">
+              <button type="button" class="isyf-product-qty-button" data-qty-minus>&ndash;</button>
+              <input
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                class="isyf-product-qty-value"
+                id="isyf-qty"
+                style="border: none; background: none; text-align: center; width: 40px; font-size: 14px; font-weight: 400; color: var(--Black); -moz-appearance: textfield;"
+              >
+              <button type="button" class="isyf-product-qty-button" data-qty-plus>+</button>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="isyf-btn isyf-btn-solid isyf-btn-full-width isyf-product-add-to-bag"
+            {%- unless current_variant.available %} disabled{% endunless %}
+          >
+            {%- if current_variant.available -%}ADD TO BAG{%- else -%}SOLD OUT{%- endif -%}
+          </button>
+        {%- endform -%}
+
+        <p class="isyf-product-free-shipping">Free shipping over &euro;100</p>
+
+        {%- comment -%} Accordions {%- endcomment -%}
+        <div class="isyf-product-accordion-list">
+          {%- if product.description != blank -%}
+            <details>
+              <summary class="isyf-product-accordion">
+                <span>Description</span><span class="isyf-product-accordion-icon">+</span>
+              </summary>
+              <div class="isyf-product-accordion-content">{{ product.description }}</div>
+            </details>
+          {%- endif -%}
+          <details>
+            <summary class="isyf-product-accordion">
+              <span>Shipping</span><span class="isyf-product-accordion-icon">+</span>
+            </summary>
+            <div class="isyf-product-accordion-content">
+              Free shipping on orders over €100. Europe: 5–10 business days. North America: 7–14 business days. Rest of world: 10–20 business days.
+            </div>
+          </details>
+          <details>
+            <summary class="isyf-product-accordion">
+              <span>Size Guide</span><span class="isyf-product-accordion-icon">+</span>
+            </summary>
+            <div class="isyf-product-accordion-content">
+              Our pieces run true to size with a relaxed fit. For an oversized look, size up. Check our full <a href="/pages/size-guide">size guide</a> for detailed measurements.
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Recommendations {%- endcomment -%}
+  {%- if recommendations.products_count > 0 -%}
+    <section class="isyf-product-related">
+      <h2 class="isyf-product-related-title">You might also like</h2>
+      <div class="isyf-product-related-row">
+        {%- for product in recommendations.products limit: 4 -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var qtyInput = document.getElementById('isyf-qty');
+    var minusBtn = document.querySelector('[data-qty-minus]');
+    var plusBtn = document.querySelector('[data-qty-plus]');
+    if (minusBtn) minusBtn.addEventListener('click', function () { qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1); });
+    if (plusBtn) plusBtn.addEventListener('click', function () { qtyInput.value = parseInt(qtyInput.value) + 1; });
+
+    document.querySelectorAll('[data-thumb]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.getElementById('isyf-main-img').src = btn.dataset.src;
+        document.querySelectorAll('[data-thumb]').forEach(function (b) { b.style.borderColor = ''; });
+        btn.style.borderColor = 'var(--Black)';
+      });
+    });
+
+    document.querySelectorAll('.isyf-product-accordion-list details').forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        d.querySelector('.isyf-product-accordion-icon').textContent = d.open ? '−' : '+';
+      });
+    });
+
+    var optionBtns = document.querySelectorAll('[data-option-value]');
+    optionBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var name = btn.dataset.optionName;
+        document.querySelectorAll('[data-option-name="' + name + '"]').forEach(function (b) {
+          b.classList.remove('isyf-product-size-option-active');
+        });
+        btn.classList.add('isyf-product-size-option-active');
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

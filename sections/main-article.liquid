@@ -1,0 +1,67 @@
+{%- comment -%}
+  Main Article — single blog article
+  Uses isyf-article-* classes from isyf-base.css
+{%- endcomment -%}
+
+<div class="isyf-article-page">
+  {%- if article.image != blank -%}
+    <div class="isyf-article-hero-wrapper">
+      <img
+        class="isyf-article-hero-image"
+        src="{{ article.image | image_url: width: 2000 }}"
+        alt="{{ article.image.alt | default: article.title | escape }}"
+      >
+      <div class="isyf-article-hero-overlay"></div>
+      <div class="isyf-article-hero-content">
+        {%- if article.tags.size > 0 -%}
+          <div class="isyf-article-hero-badges">
+            {%- for tag in article.tags -%}
+              {% render 'badge', text: tag, variant: 'dark' %}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        <h1 class="isyf-article-hero-title">{{ article.title }}</h1>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="isyf-article-content">
+      <a href="{{ blog.url }}" class="isyf-article-back-link">&larr; {{ blog.title }}</a>
+      <h1 class="isyf-article-title">{{ article.title }}</h1>
+    </div>
+  {%- endif -%}
+
+  <div class="isyf-article-body">
+    {{ article.content }}
+  </div>
+
+  {%- if blog.articles_count > 1 -%}
+    <section class="isyf-article-more-section">
+      <h2 class="isyf-article-more-title">More from the journal</h2>
+      <div class="isyf-article-more-grid">
+        {%- for related in blog.articles limit: 3 -%}
+          {%- unless related.id == article.id -%}
+            <a href="{{ related.url }}" class="isyf-article-more-card">
+              {%- if related.image != blank -%}
+                <img
+                  class="isyf-article-more-image"
+                  src="{{ related.image | image_url: width: 600 }}"
+                  alt="{{ related.title | escape }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              <span class="isyf-article-more-card-title">{{ related.title }}</span>
+            </a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}
