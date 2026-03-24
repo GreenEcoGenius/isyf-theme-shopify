@@ -1,0 +1,32 @@
+{%- comment -%}
+  Button snippet — converted from Button.tsx
+  Uses isyf-btn-* classes from isyf-base.css
+
+  Parameters:
+    label      — (required) button text
+    variant    — 'bright', 'dark', 'solid' (default: 'bright')
+    url        — if provided renders <a>, otherwise <button>
+    full_width — true/false (default: false)
+
+  Usage:
+    {% render 'button', label: 'Shop Now', variant: 'bright', url: '/collections/all' %}
+    {% render 'button', label: 'Add to Bag', variant: 'solid', full_width: true %}
+    {% render 'button', label: 'Discover', variant: 'dark', url: '/pages/about' %}
+{%- endcomment -%}
+
+{%- liquid
+  unless variant
+    assign variant = 'bright'
+  endunless
+
+  assign btn_classes = 'isyf-btn isyf-btn-' | append: variant
+  if full_width
+    assign btn_classes = btn_classes | append: ' isyf-btn-full-width'
+  endif
+-%}
+
+{%- if url != blank -%}
+  <a href="{{ url }}" class="{{ btn_classes }}">{{ label }}</a>
+{%- else -%}
+  <button type="button" class="{{ btn_classes }}">{{ label }}</button>
+{%- endif -%}

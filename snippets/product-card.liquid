@@ -1,0 +1,49 @@
+{%- comment -%}
+  Product Card snippet — converted from ProductCard.tsx
+  Uses isyf-product-card-* classes from isyf-base.css
+
+  Usage:
+    {% render 'product-card', product: product %}
+    {% render 'product-card', product: product, label: 'New' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign card_product = product
+  assign card_url = card_product.url
+  assign on_sale = false
+  if card_product.compare_at_price > card_product.price
+    assign on_sale = true
+  endif
+-%}
+
+<a href="{{ card_url }}" class="isyf-product-card">
+  <div class="isyf-product-card-image-wrapper">
+    {%- if on_sale -%}
+      <span class="isyf-badge isyf-badge-red isyf-badge-floating">Sale</span>
+    {%- endif -%}
+    {%- if card_product.featured_image != blank -%}
+      <img
+        class="isyf-product-card-image"
+        src="{{ card_product.featured_image | image_url: width: 600 }}"
+        alt="{{ card_product.featured_image.alt | default: card_product.title | escape }}"
+        loading="lazy"
+        width="600"
+        height="800"
+      >
+    {%- endif -%}
+  </div>
+  <div class="isyf-product-card-info">
+    {%- if label != blank -%}
+      <span class="isyf-product-card-label">{{ label }}</span>
+    {%- elsif card_product.type != blank -%}
+      <span class="isyf-product-card-label">{{ card_product.type }}</span>
+    {%- endif -%}
+    <span class="isyf-product-card-name">{{ card_product.title }}</span>
+    <div class="isyf-product-card-price-row">
+      {%- if on_sale -%}
+        <span class="isyf-product-card-original-price">{{ card_product.compare_at_price | money }}</span>
+      {%- endif -%}
+      <span class="isyf-product-card-price">{{ card_product.price | money }}</span>
+    </div>
+  </div>
+</a>

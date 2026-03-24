@@ -1,0 +1,24 @@
+{%- comment -%}
+  Badge snippet — converted from Badge.tsx
+  Uses isyf-badge-* classes from isyf-base.css
+
+  Parameters:
+    text     — (required) badge label
+    variant  — 'red', 'dark', 'gray' (default: 'dark')
+    floating — true/false, adds absolute positioning (default: false)
+
+  Usage:
+    {% render 'badge', text: 'Sale', variant: 'red' %}
+    {% render 'badge', text: '-20%', variant: 'red', floating: true %}
+    {% render 'badge', text: 'New', variant: 'gray' %}
+{%- endcomment -%}
+
+{%- liquid
+  unless variant
+    assign variant = 'dark'
+  endunless
+-%}
+
+<span class="isyf-badge isyf-badge-{{ variant }}{% if floating %} isyf-badge-floating{% endif %}">
+  {{- text -}}
+</span>
