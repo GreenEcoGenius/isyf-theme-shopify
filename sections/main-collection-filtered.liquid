@@ -203,7 +203,13 @@
     {%- comment -%} ===== MAIN CONTENT ===== {%- endcomment -%}
     <section class="isyf-shop-content">
       <div class="isyf-shop-content-header">
-        <h1 class="isyf-shop-title">{{ collection.title }}</h1>
+        <h1 class="isyf-shop-title">
+          {%- if collection.handle == 'all' -%}
+            All Products
+          {%- else -%}
+            {{ collection.title }}
+          {%- endif -%}
+        </h1>
 
         <div class="isyf-shop-header-meta">
           <span class="isyf-shop-count">{{ collection.products_count }} product{{ collection.products_count | pluralize: '', 's' }}</span>
