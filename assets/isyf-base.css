@@ -1417,7 +1417,7 @@ div.isyf-category-image {
 /* Home — Mobile */
 @media (max-width: 768px) {
   .isyf-announcement-bar { font-size: 9px; letter-spacing: 0.15em; padding: 8px 12px; }
-  .isyf-hero { height: 75vh; min-height: 480px; max-height: 640px; padding-bottom: 0; justify-content: center; background-position: 35% center; }
+  .isyf-hero { height: 75vh; min-height: 480px; max-height: 640px; padding-bottom: 0; justify-content: center; background-position: 20% center; }
   .isyf-hero-title { font-size: 32px; }
   .isyf-hero-subtitle { font-size: 11px; letter-spacing: 0.2em; }
   .isyf-hero-content { gap: 20px; padding: 0 24px; }
@@ -1451,7 +1451,7 @@ div.isyf-category-image {
 
 /* Home — Small mobile */
 @media (max-width: 480px) {
-  .isyf-hero { height: 70vh; min-height: 420px; max-height: 560px; padding-bottom: 0; justify-content: center; background-position: 35% center; }
+  .isyf-hero { height: 70vh; min-height: 420px; max-height: 560px; padding-bottom: 0; justify-content: center; background-position: 20% center; }
   .isyf-hero-title { font-size: 26px; }
   .isyf-hero-subtitle { font-size: 10px; }
   .isyf-collection-card { height: 320px; }
