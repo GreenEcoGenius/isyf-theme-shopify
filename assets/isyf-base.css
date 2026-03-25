@@ -948,6 +948,10 @@ p, span, a, button, input, textarea, select, label {
   letter-spacing: 0.1em;
   color: var(--Black);
   text-decoration: none;
+  display: block;
+}
+.isyf-footer-logo img {
+  margin-left: -8px;
 }
 .isyf-footer-social-links {
   display: flex;
