@@ -11,14 +11,12 @@
   assign btn_url    = section.settings.button_url
 -%}
 
-<section
-  class="isyf-hero"
-  {%- if hero_image != blank %}
-    style="background-image: url('{{ hero_image | image_url: width: 2000 }}');"
-  {%- else %}
-    style="background-image: url('{{ 'hero-bg.jpg' | asset_url }}');"
-  {%- endif %}
->
+<section class="isyf-hero">
+  {%- if hero_image != blank -%}
+    <img class="isyf-hero-bg" src="{{ hero_image | image_url: width: 2000 }}" alt="" loading="eager">
+  {%- else -%}
+    <img class="isyf-hero-bg" src="{{ 'hero-bg.jpg' | asset_url }}" alt="" loading="eager">
+  {%- endif -%}
   <div class="isyf-hero-overlay"></div>
   <div class="isyf-hero-content">
     {%- if heading != blank -%}
