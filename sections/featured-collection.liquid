@@ -25,18 +25,27 @@
         {% render 'product-card', product: product %}
       {%- endfor -%}
     {%- else -%}
+      {%- assign placeholder_images = 'product-1.jpg,product-2.jpg,product-3.jpg,product-4.jpg' | split: ',' -%}
+      {%- assign placeholder_names = 'Oversized Knit Sweater,Essential Hoodie,Classic Tee,Tailored Trousers' | split: ',' -%}
+      {%- assign placeholder_prices = '89.00,79.00,39.00,95.00' | split: ',' -%}
       {%- for i in (1..limit) -%}
-        <div class="isyf-product-card">
+        {%- assign idx = forloop.index0 | modulo: 4 -%}
+        <a href="/collections/all" class="isyf-product-card">
           <div class="isyf-product-card-image-wrapper">
-            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            <img
+              src="{{ placeholder_images[idx] | asset_url }}"
+              alt="{{ placeholder_names[idx] }}"
+              loading="lazy"
+              class="isyf-product-card-image"
+            >
           </div>
           <div class="isyf-product-card-info">
-            <span class="isyf-product-card-name">Sample Product {{ i }}</span>
+            <span class="isyf-product-card-name">{{ placeholder_names[idx] }}</span>
             <div class="isyf-product-card-price-row">
-              <span class="isyf-product-card-price">€00.00</span>
+              <span class="isyf-product-card-price">&euro;{{ placeholder_prices[idx] }}</span>
             </div>
           </div>
-        </div>
+        </a>
       {%- endfor -%}
     {%- endif -%}
   </div>

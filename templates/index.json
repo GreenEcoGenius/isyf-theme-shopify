@@ -76,13 +76,6 @@
         "link_url": "/pages/about"
       }
     },
-    "articles": {
-      "type": "article-grid",
-      "settings": {
-        "heading": "FROM THE JOURNAL",
-        "articles_to_show": 3
-      }
-    },
     "collections": {
       "type": "two-items-grid",
       "settings": {},
@@ -91,14 +84,16 @@
           "type": "card",
           "settings": {
             "title": "ISYF PREMIUM",
-            "button_label": "DISCOVER"
+            "button_label": "SHOP NOW",
+            "link": "/collections/all"
           }
         },
         "grid_feels": {
           "type": "card",
           "settings": {
             "title": "ISYF FEELS",
-            "button_label": "DISCOVER"
+            "button_label": "SHOP NOW",
+            "link": "/collections/all"
           }
         }
       },
@@ -107,13 +102,11 @@
         "grid_feels"
       ]
     },
-    "banner": {
-      "type": "full-image-banner",
+    "articles": {
+      "type": "article-grid",
       "settings": {
-        "subtitle": "Every design carries a message",
-        "heading": "FEEL SOMETHING",
-        "button_label": "SHOP NOW",
-        "button_url": "/collections/all"
+        "heading": "FROM THE JOURNAL",
+        "articles_to_show": 3
       }
     },
     "testimonials": {
@@ -200,9 +193,8 @@
     "featured",
     "categories",
     "story",
-    "articles",
     "collections",
-    "banner",
+    "articles",
     "testimonials",
     "instagram",
     "subscribe",
