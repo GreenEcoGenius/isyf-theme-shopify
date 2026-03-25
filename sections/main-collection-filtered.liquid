@@ -1,87 +1,203 @@
 {%- comment -%}
-  Enhanced Collection Page with tag-based filter tabs
-  Uses isyf-shop-* classes from isyf-base.css
+  Collection Page — sidebar navigation matching menu structure
+  Tag-based filtering: gender (women/men), line (premium/feels), type (pulls/tshirts/vestes/pantalons/sweats)
+  Category: accessories, rituels, sale
 {%- endcomment -%}
 
 {%- liquid
   assign per_page = section.settings.products_per_page
+  assign current_tag_list = current_tags | join: ','
 -%}
 
 <div class="isyf-shop-page">
-  <section class="isyf-shop-content">
-    <h1 class="isyf-shop-title">{{ collection.title }}</h1>
+  <div class="isyf-shop-layout">
 
-    {%- if collection.description != blank -%}
-      <p class="isyf-section-subtitle" style="text-align: center; margin-bottom: 32px;">{{ collection.description }}</p>
-    {%- endif -%}
+    {%- comment -%} ===== SIDEBAR ===== {%- endcomment -%}
+    <aside class="isyf-shop-sidebar">
+      <button class="isyf-shop-sidebar-toggle" data-sidebar-toggle>
+        <span>Filter</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
 
-    {%- if collection.all_tags.size > 0 -%}
-      <div class="isyf-shop-filter-bar">
-        <a
-          href="{{ collection.url }}"
-          class="isyf-shop-filter-btn{% unless current_tags %} isyf-shop-filter-btn-active{% endunless %}"
-        >All</a>
-        {%- for tag in collection.all_tags -%}
-          {%- if current_tags contains tag -%}
-            <a href="{{ collection.url }}" class="isyf-shop-filter-btn isyf-shop-filter-btn-active">{{ tag }}</a>
+      <nav class="isyf-shop-sidebar-nav" data-sidebar-nav>
+        <a href="{{ collection.url }}" class="isyf-sidebar-link isyf-sidebar-link-all{% unless current_tags %} is-active{% endunless %}">All Products</a>
+
+        {%- comment -%} WOMEN {%- endcomment -%}
+        <div class="isyf-sidebar-group" data-sidebar-group>
+          <button class="isyf-sidebar-group-btn{% if current_tag_list contains 'women' %} is-active{% endif %}" data-sidebar-group-toggle>
+            Women <span>+</span>
+          </button>
+          <div class="isyf-sidebar-sub{% if current_tag_list contains 'women' %} is-open{% endif %}">
+            <span class="isyf-sidebar-sub-title">ISYF Premium</span>
+            <a href="{{ collection.url }}/women+premium+pulls" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pulls' and current_tag_list contains 'women' and current_tag_list contains 'premium' %} is-active{% endif %}">Pulls &amp; Cardigans</a>
+            <a href="{{ collection.url }}/women+premium+tshirts" class="isyf-sidebar-sub-link{% if current_tag_list contains 'tshirts' and current_tag_list contains 'women' and current_tag_list contains 'premium' %} is-active{% endif %}">T-shirts</a>
+            <a href="{{ collection.url }}/women+premium+vestes" class="isyf-sidebar-sub-link{% if current_tag_list contains 'vestes' and current_tag_list contains 'women' and current_tag_list contains 'premium' %} is-active{% endif %}">Vestes</a>
+            <a href="{{ collection.url }}/women+premium+pantalons" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pantalons' and current_tag_list contains 'women' and current_tag_list contains 'premium' %} is-active{% endif %}">Pantalons</a>
+
+            <span class="isyf-sidebar-sub-title">ISYF FEELS</span>
+            <a href="{{ collection.url }}/women+feels+sweats" class="isyf-sidebar-sub-link{% if current_tag_list contains 'sweats' and current_tag_list contains 'women' and current_tag_list contains 'feels' %} is-active{% endif %}">Sweats &amp; Hoodies</a>
+            <a href="{{ collection.url }}/women+feels+tshirts" class="isyf-sidebar-sub-link{% if current_tag_list contains 'tshirts' and current_tag_list contains 'women' and current_tag_list contains 'feels' %} is-active{% endif %}">T-shirts</a>
+            <a href="{{ collection.url }}/women+feels+vestes" class="isyf-sidebar-sub-link{% if current_tag_list contains 'vestes' and current_tag_list contains 'women' and current_tag_list contains 'feels' %} is-active{% endif %}">Vestes</a>
+            <a href="{{ collection.url }}/women+feels+pantalons" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pantalons' and current_tag_list contains 'women' and current_tag_list contains 'feels' %} is-active{% endif %}">Pantalons</a>
+
+            <a href="{{ collection.url }}/women" class="isyf-sidebar-sub-link isyf-sidebar-shop-all{% if current_tags.size == 1 and current_tags.first == 'women' %} is-active{% endif %}">Shop All Women</a>
+          </div>
+        </div>
+
+        {%- comment -%} MEN {%- endcomment -%}
+        <div class="isyf-sidebar-group" data-sidebar-group>
+          <button class="isyf-sidebar-group-btn{% if current_tag_list contains 'men' %} is-active{% endif %}" data-sidebar-group-toggle>
+            Men <span>+</span>
+          </button>
+          <div class="isyf-sidebar-sub{% if current_tag_list contains 'men' %} is-open{% endif %}">
+            <span class="isyf-sidebar-sub-title">ISYF Premium</span>
+            <a href="{{ collection.url }}/men+premium+pulls" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pulls' and current_tag_list contains 'men' and current_tag_list contains 'premium' %} is-active{% endif %}">Pulls &amp; Cardigans</a>
+            <a href="{{ collection.url }}/men+premium+tshirts" class="isyf-sidebar-sub-link{% if current_tag_list contains 'tshirts' and current_tag_list contains 'men' and current_tag_list contains 'premium' %} is-active{% endif %}">T-shirts</a>
+            <a href="{{ collection.url }}/men+premium+vestes" class="isyf-sidebar-sub-link{% if current_tag_list contains 'vestes' and current_tag_list contains 'men' and current_tag_list contains 'premium' %} is-active{% endif %}">Vestes</a>
+            <a href="{{ collection.url }}/men+premium+pantalons" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pantalons' and current_tag_list contains 'men' and current_tag_list contains 'premium' %} is-active{% endif %}">Pantalons</a>
+
+            <span class="isyf-sidebar-sub-title">ISYF FEELS</span>
+            <a href="{{ collection.url }}/men+feels+sweats" class="isyf-sidebar-sub-link{% if current_tag_list contains 'sweats' and current_tag_list contains 'men' and current_tag_list contains 'feels' %} is-active{% endif %}">Sweats &amp; Hoodies</a>
+            <a href="{{ collection.url }}/men+feels+tshirts" class="isyf-sidebar-sub-link{% if current_tag_list contains 'tshirts' and current_tag_list contains 'men' and current_tag_list contains 'feels' %} is-active{% endif %}">T-shirts</a>
+            <a href="{{ collection.url }}/men+feels+vestes" class="isyf-sidebar-sub-link{% if current_tag_list contains 'vestes' and current_tag_list contains 'men' and current_tag_list contains 'feels' %} is-active{% endif %}">Vestes</a>
+            <a href="{{ collection.url }}/men+feels+pantalons" class="isyf-sidebar-sub-link{% if current_tag_list contains 'pantalons' and current_tag_list contains 'men' and current_tag_list contains 'feels' %} is-active{% endif %}">Pantalons</a>
+
+            <a href="{{ collection.url }}/men" class="isyf-sidebar-sub-link isyf-sidebar-shop-all{% if current_tags.size == 1 and current_tags.first == 'men' %} is-active{% endif %}">Shop All Men</a>
+          </div>
+        </div>
+
+        {%- comment -%} ACCESSORIES {%- endcomment -%}
+        <div class="isyf-sidebar-group" data-sidebar-group>
+          <button class="isyf-sidebar-group-btn{% if current_tag_list contains 'accessories' %} is-active{% endif %}" data-sidebar-group-toggle>
+            Accessories <span>+</span>
+          </button>
+          <div class="isyf-sidebar-sub{% if current_tag_list contains 'accessories' %} is-open{% endif %}">
+            <a href="{{ collection.url }}/accessories+women" class="isyf-sidebar-sub-link{% if current_tag_list contains 'accessories' and current_tag_list contains 'women' %} is-active{% endif %}">Women</a>
+            <a href="{{ collection.url }}/accessories+men" class="isyf-sidebar-sub-link{% if current_tag_list contains 'accessories' and current_tag_list contains 'men' %} is-active{% endif %}">Men</a>
+            <a href="{{ collection.url }}/accessories" class="isyf-sidebar-sub-link isyf-sidebar-shop-all{% if current_tags.size == 1 and current_tags.first == 'accessories' %} is-active{% endif %}">Shop All Accessories</a>
+          </div>
+        </div>
+
+        {%- comment -%} RITUELS {%- endcomment -%}
+        <div class="isyf-sidebar-group" data-sidebar-group>
+          <button class="isyf-sidebar-group-btn{% if current_tag_list contains 'rituels' %} is-active{% endif %}" data-sidebar-group-toggle>
+            Rituels <span>+</span>
+          </button>
+          <div class="isyf-sidebar-sub{% if current_tag_list contains 'rituels' %} is-open{% endif %}">
+            <a href="{{ collection.url }}/rituels+women" class="isyf-sidebar-sub-link{% if current_tag_list contains 'rituels' and current_tag_list contains 'women' %} is-active{% endif %}">Women</a>
+            <a href="{{ collection.url }}/rituels+men" class="isyf-sidebar-sub-link{% if current_tag_list contains 'rituels' and current_tag_list contains 'men' %} is-active{% endif %}">Men</a>
+            <a href="{{ collection.url }}/rituels" class="isyf-sidebar-sub-link isyf-sidebar-shop-all{% if current_tags.size == 1 and current_tags.first == 'rituels' %} is-active{% endif %}">Shop All Rituels</a>
+          </div>
+        </div>
+
+        {%- comment -%} SALE {%- endcomment -%}
+        <div class="isyf-sidebar-group" data-sidebar-group>
+          <button class="isyf-sidebar-group-btn{% if current_tag_list contains 'sale' %} is-active{% endif %}" data-sidebar-group-toggle>
+            Sale <span>+</span>
+          </button>
+          <div class="isyf-sidebar-sub{% if current_tag_list contains 'sale' %} is-open{% endif %}">
+            <a href="{{ collection.url }}/sale+women" class="isyf-sidebar-sub-link{% if current_tag_list contains 'sale' and current_tag_list contains 'women' %} is-active{% endif %}">Women</a>
+            <a href="{{ collection.url }}/sale+men" class="isyf-sidebar-sub-link{% if current_tag_list contains 'sale' and current_tag_list contains 'men' %} is-active{% endif %}">Men</a>
+            <a href="{{ collection.url }}/sale" class="isyf-sidebar-sub-link isyf-sidebar-shop-all{% if current_tags.size == 1 and current_tags.first == 'sale' %} is-active{% endif %}">Shop All Sale</a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    {%- comment -%} ===== MAIN CONTENT ===== {%- endcomment -%}
+    <section class="isyf-shop-content">
+      <div class="isyf-shop-content-header">
+        <h1 class="isyf-shop-title">
+          {%- if current_tags -%}
+            {{ current_tags | join: ' / ' | capitalize }}
           {%- else -%}
-            <a href="{{ collection.url }}/{{ tag | handle }}" class="isyf-shop-filter-btn">{{ tag }}</a>
+            {{ collection.title }}
           {%- endif -%}
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
+        </h1>
 
-    {%- if section.settings.enable_sort -%}
-      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
-        <div style="position: relative;">
-          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-          <select
-            onchange="window.location.href = this.value"
-            style="appearance: none; padding: 8px 32px 8px 12px; border: var(--border-1); font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--Black); cursor: pointer; background: var(--White) url('data:image/svg+xml,%3Csvg width=&quot;10&quot; height=&quot;6&quot; viewBox=&quot;0 0 10 6&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M1 1l4 4 4-4&quot; stroke=&quot;%23000&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/%3E%3C/svg%3E') no-repeat right 12px center;"
-            aria-label="Sort by"
-          >
-            {%- for option in collection.sort_options -%}
-              <option
-                value="{{ collection.url }}?sort_by={{ option.value }}"
-                {% if sort_by == option.value %}selected{% endif %}
-              >{{ option.name }}</option>
-            {%- endfor -%}
-          </select>
-        </div>
-      </div>
-    {%- endif -%}
-
-    {%- paginate collection.products by per_page -%}
-      {%- if collection.products.size > 0 -%}
-        <div class="isyf-shop-product-grid">
-          {%- for product in collection.products -%}
-            {% render 'product-card', product: product %}
-          {%- endfor -%}
-        </div>
-
-        {%- if paginate.pages > 1 -%}
-          <div style="display: flex; justify-content: center; gap: 8px; margin-top: 48px; align-items: center;">
-            {%- if paginate.previous -%}
-              <a href="{{ paginate.previous.url }}" class="isyf-btn isyf-btn-dark" style="padding: 10px 24px; font-size: 11px;">Previous</a>
-            {%- endif -%}
-            {%- for part in paginate.parts -%}
-              {%- if part.is_link -%}
-                <a href="{{ part.url }}" class="isyf-shop-filter-btn">{{ part.title }}</a>
-              {%- else -%}
-                <span class="isyf-shop-filter-btn isyf-shop-filter-btn-active">{{ part.title }}</span>
-              {%- endif -%}
-            {%- endfor -%}
-            {%- if paginate.next -%}
-              <a href="{{ paginate.next.url }}" class="isyf-btn isyf-btn-dark" style="padding: 10px 24px; font-size: 11px;">Next</a>
-            {%- endif -%}
+        {%- if section.settings.enable_sort -%}
+          <div class="isyf-shop-sort">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <select
+              onchange="window.location.href = this.value"
+              class="isyf-shop-sort-select"
+              aria-label="Sort by"
+            >
+              {%- for option in collection.sort_options -%}
+                <option
+                  value="{{ collection.url }}{% if current_tags %}{% for tag in current_tags %}/{{ tag | handle }}{% endfor %}{% endif %}?sort_by={{ option.value }}"
+                  {% if sort_by == option.value %}selected{% endif %}
+                >{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
           </div>
         {%- endif -%}
-      {%- else -%}
-        <p class="isyf-shop-empty-text">No products found in this category yet. Check back soon.</p>
-      {%- endif -%}
-    {%- endpaginate -%}
-  </section>
+      </div>
+
+      {%- paginate collection.products by per_page -%}
+        {%- if collection.products.size > 0 -%}
+          <div class="isyf-shop-product-grid">
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product %}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div class="isyf-shop-pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="isyf-shop-pagination-btn">&larr; Previous</a>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="isyf-shop-pagination-num">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="isyf-shop-pagination-num isyf-shop-pagination-current">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="isyf-shop-pagination-btn">Next &rarr;</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="isyf-shop-empty">
+            <p class="isyf-shop-empty-text">No products found in this category yet.</p>
+            <a href="{{ collection.url }}" class="isyf-shop-empty-link">View all products</a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </section>
+  </div>
 </div>
+
+<script>
+(function() {
+  var groupToggles = document.querySelectorAll('[data-sidebar-group-toggle]');
+  var sidebarToggle = document.querySelector('[data-sidebar-toggle]');
+  var sidebarNav = document.querySelector('[data-sidebar-nav]');
+
+  groupToggles.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.closest('[data-sidebar-group]');
+      var sub = group.querySelector('.isyf-sidebar-sub');
+      var isOpen = sub.classList.contains('is-open');
+      sub.classList.toggle('is-open');
+      btn.querySelector('span').textContent = isOpen ? '+' : '\u2212';
+    });
+  });
+
+  document.querySelectorAll('.isyf-sidebar-sub.is-open').forEach(function(sub) {
+    var btn = sub.closest('[data-sidebar-group]').querySelector('[data-sidebar-group-toggle] span');
+    if (btn) btn.textContent = '\u2212';
+  });
+
+  if (sidebarToggle && sidebarNav) {
+    sidebarToggle.addEventListener('click', function() {
+      sidebarNav.classList.toggle('is-mobile-open');
+    });
+  }
+})();
+</script>
 
 {% schema %}
 {
