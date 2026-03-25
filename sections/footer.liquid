@@ -7,30 +7,32 @@
   <div class="isyf-footer-top">
     {%- comment -%} Brand column {%- endcomment -%}
     <div class="isyf-footer-column isyf-footer-brand-column">
-      <a href="/" class="isyf-footer-logo">
-        {%- if section.settings.logo != blank -%}
-          <img
-            src="{{ section.settings.logo | image_url: width: 400 }}"
-            alt="{{ shop.name }}"
-            loading="lazy"
-            style="height: 90px; width: auto;"
-          >
-        {%- else -%}
-          <img
-            src="{{ 'logo-isyf.png' | asset_url }}"
-            alt="{{ shop.name }}"
-            loading="lazy"
-            style="height: 90px; width: auto;"
-          >
-        {%- endif -%}
-      </a>
-      <div class="isyf-footer-social-links">
+      <div class="isyf-footer-brand-row">
+        <a href="/" class="isyf-footer-logo">
+          {%- if section.settings.logo != blank -%}
+            <img
+              src="{{ section.settings.logo | image_url: width: 400 }}"
+              alt="{{ shop.name }}"
+              loading="lazy"
+              style="height: 36px; width: auto;"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'logo-isyf.png' | asset_url }}"
+              alt="{{ shop.name }}"
+              loading="lazy"
+              style="height: 36px; width: auto;"
+            >
+          {%- endif -%}
+        </a>
+        <div class="isyf-footer-social-links">
         {%- if section.settings.social_instagram != blank -%}
           <a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="isyf-footer-social-link">Instagram</a>
         {%- endif -%}
         {%- if section.settings.social_tiktok != blank -%}
           <a href="{{ section.settings.social_tiktok }}" target="_blank" rel="noopener noreferrer" class="isyf-footer-social-link">TikTok</a>
         {%- endif -%}
+        </div>
       </div>
     </div>
 
