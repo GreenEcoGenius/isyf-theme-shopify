@@ -157,9 +157,15 @@
 
 <script>
   (function () {
+    var variants = {{ product.variants | json }};
+    var options = {{ product.options | json }};
+    var variantIdInput = document.getElementById('isyf-variant-id');
+    var addBtn = document.querySelector('.isyf-product-add-to-bag');
+    var priceEl = document.querySelector('.isyf-product-price');
     var qtyInput = document.getElementById('isyf-qty');
     var minusBtn = document.querySelector('[data-qty-minus]');
     var plusBtn = document.querySelector('[data-qty-plus]');
+
     if (minusBtn) minusBtn.addEventListener('click', function () { qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1); });
     if (plusBtn) plusBtn.addEventListener('click', function () { qtyInput.value = parseInt(qtyInput.value) + 1; });
 
@@ -177,6 +183,55 @@
       });
     });
 
+    function getSelectedOptions() {
+      var selected = {};
+      options.forEach(function (name) {
+        var active = document.querySelector('[data-option-name="' + name + '"].isyf-product-size-option-active');
+        if (active) selected[name] = active.dataset.optionValue;
+      });
+      return selected;
+    }
+
+    function findVariant(selected) {
+      return variants.find(function (v) {
+        return options.every(function (name, i) {
+          return v['option' + (i + 1)] === selected[name];
+        });
+      });
+    }
+
+    function formatMoney(cents) {
+      return (cents / 100).toLocaleString('en-US', { style: 'currency', currency: {{ shop.currency | json }} });
+    }
+
+    function updateVariant() {
+      var selected = getSelectedOptions();
+      var variant = findVariant(selected);
+      if (!variant) return;
+
+      variantIdInput.value = variant.id;
+
+      if (variant.available) {
+        addBtn.disabled = false;
+        addBtn.textContent = 'ADD TO BAG';
+      } else {
+        addBtn.disabled = true;
+        addBtn.textContent = 'SOLD OUT';
+      }
+
+      var priceHtml = '';
+      if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+        priceHtml = '<s style="color:var(--Gray-3);font-weight:300;">' + formatMoney(variant.compare_at_price) + '</s>&nbsp;';
+      }
+      priceHtml += formatMoney(variant.price);
+      priceEl.innerHTML = priceHtml;
+
+      if (variant.featured_image) {
+        var mainImg = document.getElementById('isyf-main-img');
+        if (mainImg) mainImg.src = variant.featured_image.src;
+      }
+    }
+
     var optionBtns = document.querySelectorAll('[data-option-value]');
     optionBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -185,6 +240,7 @@
           b.classList.remove('isyf-product-size-option-active');
         });
         btn.classList.add('isyf-product-size-option-active');
+        updateVariant();
       });
     });
   })();
