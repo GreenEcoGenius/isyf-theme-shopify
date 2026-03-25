@@ -1,39 +1,68 @@
 {%- comment -%}
-  Lookbook Page
-  Uses isyf-lookbook-* classes from isyf-base.css
+  Lookbook Page — editorial showcase of ISYF collections
 {%- endcomment -%}
 
+{%- comment -%} ===== HERO ===== {%- endcomment -%}
 <div class="isyf-lookbook-page">
   <div class="isyf-lookbook-hero">
-    <span class="isyf-lookbook-hero-label">{{ section.settings.subtitle }}</span>
-    <h1 class="isyf-lookbook-hero-title">{{ section.settings.title }}</h1>
-    <p class="isyf-lookbook-hero-subtitle">{{ section.settings.description }}</p>
+    <h1 class="isyf-lookbook-hero-title">LOOKBOOK</h1>
+    <p class="isyf-lookbook-hero-subtitle">See the vision. Feel the collection.</p>
   </div>
 
-  <div class="isyf-lookbook-grid">
-    {%- for block in section.blocks -%}
-      {%- if block.settings.image != blank -%}
-        <div class="isyf-lookbook-grid-item{% if block.settings.width == 'wide' %} isyf-lookbook-wide{% elsif block.settings.width == 'full' %} isyf-lookbook-full{% endif %}" {{ block.shopify_attributes }}>
-          <img
-            class="isyf-lookbook-grid-image"
-            src="{{ block.settings.image | image_url: width: 1200 }}"
-            alt="{{ block.settings.caption | default: 'Lookbook' | escape }}"
-            loading="lazy"
-          >
-          {%- if block.settings.caption != blank -%}
-            <div class="isyf-lookbook-grid-caption">
-              <span>{{ block.settings.caption }}</span>
-            </div>
-          {%- endif -%}
-        </div>
-      {%- else -%}
-        <div class="isyf-lookbook-grid-item{% if block.settings.width == 'wide' %} isyf-lookbook-wide{% elsif block.settings.width == 'full' %} isyf-lookbook-full{% endif %}" style="background: var(--Gray-1);" {{ block.shopify_attributes }}></div>
-      {%- endif -%}
-    {%- endfor -%}
+  {%- comment -%} ===== ISYF PREMIUM ===== {%- endcomment -%}
+  <div class="isyf-lookbook-block">
+    <div class="isyf-lookbook-block-image">
+      <img src="{{ 'grid-premium.jpg' | asset_url }}" alt="ISYF Premium Collection" loading="lazy">
+    </div>
+    <div class="isyf-lookbook-block-text">
+      <span class="isyf-lookbook-block-label">COLLECTION</span>
+      <h2 class="isyf-lookbook-block-title">ISYF Premium</h2>
+      <p class="isyf-lookbook-block-desc">Refined silhouettes. Premium fabrics. Pieces designed to last beyond the season. Every detail is considered, every material is chosen with intention. This is fashion that whispers — and stays with you.</p>
+      {% render 'button', label: 'SHOP ISYF PREMIUM', variant: 'dark', url: '/collections/all' %}
+    </div>
   </div>
 
+  {%- comment -%} ===== ISYF FEELS ===== {%- endcomment -%}
+  <div class="isyf-lookbook-block isyf-lookbook-block-reverse">
+    <div class="isyf-lookbook-block-image">
+      <img src="{{ 'grid-feels.jpg' | asset_url }}" alt="ISYF FEELS Collection" loading="lazy">
+    </div>
+    <div class="isyf-lookbook-block-text">
+      <span class="isyf-lookbook-block-label">COLLECTION</span>
+      <h2 class="isyf-lookbook-block-title">ISYF FEELS</h2>
+      <p class="isyf-lookbook-block-desc">Bold. Relaxed. Expressive. Streetwear that speaks without trying. Made-to-order pieces that carry a message — designed for those who feel before they think, and wear what they mean.</p>
+      {% render 'button', label: 'SHOP ISYF FEELS', variant: 'dark', url: '/collections/all' %}
+    </div>
+  </div>
+
+  {%- comment -%} ===== EDITORIAL GRID ===== {%- endcomment -%}
+  <div class="isyf-lookbook-editorial">
+    <div class="isyf-lookbook-editorial-grid">
+      <div class="isyf-lookbook-editorial-item isyf-lookbook-editorial-tall">
+        <img src="{{ 'category-women.jpg' | asset_url }}" alt="Women's collection" loading="lazy">
+      </div>
+      <div class="isyf-lookbook-editorial-item">
+        <img src="{{ 'story-image.jpg' | asset_url }}" alt="Craftsmanship" loading="lazy">
+      </div>
+      <div class="isyf-lookbook-editorial-item">
+        <img src="{{ 'ig-3.jpg' | asset_url }}" alt="Street style" loading="lazy">
+      </div>
+      <div class="isyf-lookbook-editorial-item isyf-lookbook-editorial-tall">
+        <img src="{{ 'category-men.jpg' | asset_url }}" alt="Men's collection" loading="lazy">
+      </div>
+      <div class="isyf-lookbook-editorial-item isyf-lookbook-editorial-wide">
+        <img src="{{ 'hero-bg.jpg' | asset_url }}" alt="ISYF Campaign" loading="lazy">
+      </div>
+      <div class="isyf-lookbook-editorial-item">
+        <img src="{{ 'ig-1.jpg' | asset_url }}" alt="On the move" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ===== CTA ===== {%- endcomment -%}
   <div class="isyf-lookbook-cta">
-    {% render 'button', label: 'SHOP THE COLLECTION', variant: 'dark', url: '/collections/all' %}
+    <h2 class="isyf-lookbook-cta-title">Feel something.</h2>
+    {% render 'button', label: 'EXPLORE THE COLLECTIONS', variant: 'dark', url: '/collections/all' %}
   </div>
 </div>
 
@@ -41,68 +70,6 @@
 {
   "name": "Lookbook",
   "tag": "section",
-  "max_blocks": 12,
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "LOOKBOOK"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle label",
-      "default": "SS26 COLLECTION"
-    },
-    {
-      "type": "text",
-      "id": "description",
-      "label": "Description",
-      "default": "See the vision. Feel the collection."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "caption",
-          "label": "Caption"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Width",
-          "options": [
-            { "value": "normal", "label": "Normal (1 column)" },
-            { "value": "wide", "label": "Wide (2 columns)" },
-            { "value": "full", "label": "Full width (3 columns)" }
-          ],
-          "default": "normal"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Lookbook",
-      "blocks": [
-        { "type": "image", "settings": { "width": "wide" } },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image", "settings": { "width": "wide" } },
-        { "type": "image", "settings": { "width": "full" } },
-        { "type": "image" }
-      ]
-    }
-  ]
+  "settings": []
 }
 {% endschema %}
