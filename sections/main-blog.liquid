@@ -41,7 +41,26 @@
           </div>
         {%- endif -%}
       {%- else -%}
-        <p class="isyf-shop-empty-text">No articles published yet.</p>
+        {%- assign journal_images = 'journal-1.jpg,journal-2.jpg,journal-3.jpg' | split: ',' -%}
+        {%- assign journal_labels = 'Design,Style,Behind the scenes' | split: ',' -%}
+        {%- assign journal_titles = 'The creative process behind ISYF,Building a conscious wardrobe,From studio to your door' | split: ',' -%}
+        {%- assign journal_urls = '/pages/journal-design,/pages/journal-style,/pages/journal-studio' | split: ',' -%}
+        <div class="isyf-journal-articles-grid">
+          {%- for i in (0..2) -%}
+            <a href="{{ journal_urls[i] }}" class="isyf-journal-article">
+              <img
+                class="isyf-journal-article-image"
+                src="{{ journal_images[i] | asset_url }}"
+                alt="{{ journal_titles[i] | escape }}"
+                loading="lazy"
+                style="object-fit: cover;"
+              >
+              <span class="isyf-journal-article-label">{{ journal_labels[i] }}</span>
+              <span class="isyf-journal-article-title">{{ journal_titles[i] }}</span>
+              <span class="isyf-journal-article-link">Read more</span>
+            </a>
+          {%- endfor -%}
+        </div>
       {%- endif -%}
     {%- endpaginate -%}
   </section>
