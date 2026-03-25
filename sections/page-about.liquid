@@ -1,56 +1,90 @@
 {%- comment -%}
-  Our Story — ISYF brand page
-  Uses isyf-story-* classes from isyf-base.css
+  Our Story — ISYF brand page (editorial layout)
 {%- endcomment -%}
 
-<div class="isyf-story-page">
-  <div class="isyf-story-hero" style="background-image: url('{{ 'hero-bg.jpg' | asset_url }}'); background-size: cover; background-position: center;">
-    <span class="isyf-story-hero-subtitle">I SEE, YOU FEEL.</span>
-    <h1 class="isyf-story-hero-title">{{ section.settings.hero_title }}</h1>
+<div class="isyf-lookbook-page">
+
+  {%- comment -%} ===== HERO ===== {%- endcomment -%}
+  <div class="isyf-lookbook-hero">
+    <h1 class="isyf-lookbook-hero-title">OUR STORY</h1>
+    <p class="isyf-lookbook-hero-subtitle">What I see, you feel.</p>
   </div>
 
-  <div class="isyf-story-section">
-    <h2 class="isyf-story-title">{{ section.settings.story_heading }}</h2>
-    <p class="isyf-story-text">{{ section.settings.story_text_1 }}</p>
-    <p class="isyf-story-text">{{ section.settings.story_text_2 }}</p>
+  {%- comment -%} ===== FULL-WIDTH IMAGE ===== {%- endcomment -%}
+  <div class="isyf-story-fullimage">
+    <img src="{{ 'story-hero.jpg' | asset_url }}" alt="ISYF Atelier" loading="lazy">
   </div>
 
-  <div class="isyf-story-collections">
-    <div class="isyf-story-collection-block">
-      <h3 class="isyf-story-collection-name">ISYF PREMIUM</h3>
-      <p class="isyf-story-collection-desc">Our premium line offers refined, minimalist pieces crafted with care. Embroidered details, heavyweight fabrics, and timeless silhouettes designed to last.</p>
-    </div>
-    <div class="isyf-story-collection-block">
-      <h3 class="isyf-story-collection-name">ISYF FEELS</h3>
-      <p class="isyf-story-collection-desc">Our street line brings bold messages, vivid graphics, and accessible prices. Every piece says something. Wear what you feel.</p>
-    </div>
+  {%- comment -%} ===== BRAND STORY ===== {%- endcomment -%}
+  <div class="isyf-story-narrative">
+    <p class="isyf-story-narrative-label">THE BEGINNING</p>
+    <h2 class="isyf-story-narrative-title">Fashion should make you feel something.</h2>
+    <p class="isyf-story-narrative-text">Founded in 2026, I SEE, YOU FEEL. was born from a simple belief: in a world of fast trends and disposable clothing, we chose a different path — one where every piece carries meaning, every design speaks, and every garment connects the vision of the creator to the emotion of the wearer.</p>
+    <p class="isyf-story-narrative-text">ISYF is not just a brand. It's a bridge between what we see and what you feel.</p>
   </div>
 
-  <div class="isyf-story-values">
-    <div class="isyf-story-value-card">
-      <h3 class="isyf-story-value-title">EMOTION-DRIVEN DESIGN</h3>
-      <p class="isyf-story-value-text">Each piece is born from a real feeling. Our designs carry messages that connect the creator's vision to the wearer's emotion.</p>
+  {%- comment -%} ===== TWO COLLECTIONS ===== {%- endcomment -%}
+  <div class="isyf-lookbook-block">
+    <div class="isyf-lookbook-block-image">
+      <img src="{{ 'grid-premium.jpg' | asset_url }}" alt="ISYF Premium" loading="lazy">
     </div>
-    <div class="isyf-story-value-card">
-      <h3 class="isyf-story-value-title">ECO-CONSCIOUS APPROACH</h3>
-      <p class="isyf-story-value-text">We partner with responsible suppliers, use print-on-demand to eliminate overproduction, and choose sustainable materials whenever possible.</p>
-    </div>
-    <div class="isyf-story-value-card">
-      <h3 class="isyf-story-value-title">DIRECT TO YOU</h3>
-      <p class="isyf-story-value-text">No middlemen, no markups. We sell directly to you so we can offer premium quality at honest prices, with free shipping over 100 EUR.</p>
+    <div class="isyf-lookbook-block-text">
+      <span class="isyf-lookbook-block-label">COLLECTION</span>
+      <h2 class="isyf-lookbook-block-title">ISYF Premium</h2>
+      <p class="isyf-lookbook-block-desc">Our premium line offers refined, minimalist pieces crafted with care. Embroidered details, heavyweight fabrics, and timeless silhouettes designed to last beyond the season.</p>
     </div>
   </div>
 
-  <div class="isyf-story-cta">
+  <div class="isyf-lookbook-block isyf-lookbook-block-reverse">
+    <div class="isyf-lookbook-block-image">
+      <img src="{{ 'lookbook-feels.jpg' | asset_url }}" alt="ISYF FEELS" loading="lazy">
+    </div>
+    <div class="isyf-lookbook-block-text">
+      <span class="isyf-lookbook-block-label">COLLECTION</span>
+      <h2 class="isyf-lookbook-block-title">ISYF FEELS</h2>
+      <p class="isyf-lookbook-block-desc">Our street line brings bold messages, vivid graphics, and accessible prices. Every piece says something — designed for those who feel before they think, and wear what they mean.</p>
+    </div>
+  </div>
+
+  {%- comment -%} ===== VALUES ===== {%- endcomment -%}
+  <div class="isyf-story-values-section">
+    <div class="isyf-story-values-grid">
+      <div class="isyf-story-value">
+        <span class="isyf-story-value-number">01</span>
+        <h3 class="isyf-story-value-heading">Emotion-Driven Design</h3>
+        <p class="isyf-story-value-text">Each piece is born from a real feeling. Our designs carry messages that connect the creator's vision to the wearer's emotion.</p>
+      </div>
+      <div class="isyf-story-value">
+        <span class="isyf-story-value-number">02</span>
+        <h3 class="isyf-story-value-heading">Eco-Conscious Approach</h3>
+        <p class="isyf-story-value-text">We partner with responsible suppliers, use print-on-demand to eliminate overproduction, and choose sustainable materials whenever possible.</p>
+      </div>
+      <div class="isyf-story-value">
+        <span class="isyf-story-value-number">03</span>
+        <h3 class="isyf-story-value-heading">Direct To You</h3>
+        <p class="isyf-story-value-text">No middlemen, no markups. We sell directly to you so we can offer premium quality at honest prices, with free shipping over €100.</p>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ===== ATELIER IMAGE ===== {%- endcomment -%}
+  <div class="isyf-story-fullimage">
+    <img src="{{ 'story-atelier.jpg' | asset_url }}" alt="ISYF Showroom" loading="lazy">
+  </div>
+
+  {%- comment -%} ===== CTA ===== {%- endcomment -%}
+  <div class="isyf-lookbook-cta">
+    <h2 class="isyf-lookbook-cta-title">Feel something.</h2>
     {% render 'button', label: 'EXPLORE THE COLLECTIONS', variant: 'dark', url: '/collections/all' %}
   </div>
 
-  <div class="isyf-story-section" style="max-width: 500px; text-align: left;">
-    <p class="isyf-story-text" style="font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--Gray-3); margin-bottom: 16px;">A brand by</p>
-    <p class="isyf-story-text" style="margin: 0;">GreenEcoGenius OU</p>
-    <p class="isyf-story-text" style="margin: 0;">Tornimae tn 5, Kesklinna linnaosa</p>
-    <p class="isyf-story-text" style="margin: 0;">10145 Tallinn, Estonia</p>
-    <p class="isyf-story-text" style="margin: 0;">contact@iseeyoufeel.com</p>
+  {%- comment -%} ===== ENTITY ===== {%- endcomment -%}
+  <div class="isyf-story-entity">
+    <p class="isyf-story-entity-label">A BRAND BY</p>
+    <p class="isyf-story-entity-line">GreenEcoGenius OÜ</p>
+    <p class="isyf-story-entity-line">Tornimäe tn 5, Kesklinna linnaosa</p>
+    <p class="isyf-story-entity-line">10145 Tallinn, Estonia</p>
+    <p class="isyf-story-entity-line">contact@iseeyoufeel.com</p>
   </div>
 </div>
 
@@ -58,31 +92,6 @@
 {
   "name": "Our Story",
   "tag": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero title",
-      "default": "OUR STORY"
-    },
-    {
-      "type": "text",
-      "id": "story_heading",
-      "label": "Story heading",
-      "default": "What I see, you feel."
-    },
-    {
-      "type": "textarea",
-      "id": "story_text_1",
-      "label": "Story paragraph 1",
-      "default": "Founded in 2026, I SEE, YOU FEEL. was born from a simple belief: fashion should make you feel something. In a world of fast trends and disposable clothing, we chose a different path - one where every piece carries meaning, every design speaks, and every garment connects the vision of the creator to the emotion of the wearer."
-    },
-    {
-      "type": "textarea",
-      "id": "story_text_2",
-      "label": "Story paragraph 2",
-      "default": "ISYF is not just a brand. It is a bridge between what we see and what you feel."
-    }
-  ]
+  "settings": []
 }
 {% endschema %}
