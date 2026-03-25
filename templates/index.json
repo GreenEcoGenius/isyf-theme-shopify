@@ -32,7 +32,7 @@
           "settings": {
             "title": "WOMEN",
             "button_label": "DISCOVER",
-            "link": "/collections/all"
+            "link": "/collections/women"
           }
         },
         "cat_men": {
@@ -40,7 +40,7 @@
           "settings": {
             "title": "MEN",
             "button_label": "DISCOVER",
-            "link": "/collections/all"
+            "link": "/collections/men"
           }
         },
         "cat_accessories": {
@@ -48,7 +48,7 @@
           "settings": {
             "title": "ACCESSORIES",
             "button_label": "DISCOVER",
-            "link": "/collections/all"
+            "link": "/collections/accessories"
           }
         },
         "cat_rituels": {
@@ -56,7 +56,7 @@
           "settings": {
             "title": "RITUELS",
             "button_label": "DISCOVER",
-            "link": "/collections/all"
+            "link": "/collections/rituels"
           }
         }
       },
