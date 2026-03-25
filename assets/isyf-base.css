@@ -941,11 +941,6 @@ p, span, a, button, input, textarea, select, label {
   gap: 24px;
   align-items: flex-start;
 }
-.isyf-footer-brand-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 .isyf-footer-logo {
   font-family: 'Playfair Display', serif;
   font-size: 16px;
