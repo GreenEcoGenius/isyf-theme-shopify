@@ -8,6 +8,19 @@
   assign featured_image = current_variant.image | default: product.featured_image
 -%}
 
+<!-- DEBUG ISYF:
+  product.available = {{ product.available }}
+  product.published_on_current_channel = {{ product.published? }}
+  current_variant.id = {{ current_variant.id }}
+  current_variant.available = {{ current_variant.available }}
+  current_variant.inventory_management = {{ current_variant.inventory_management }}
+  current_variant.inventory_policy = {{ current_variant.inventory_policy }}
+  current_variant.inventory_quantity = {{ current_variant.inventory_quantity }}
+  variants_count = {{ product.variants.size }}
+  {% for v in product.variants %}
+  variant[{{ v.title }}]: id={{ v.id }} available={{ v.available }} qty={{ v.inventory_quantity }} mgmt={{ v.inventory_management }} policy={{ v.inventory_policy }}
+  {% endfor %}
+-->
 <div class="isyf-product-page">
   <section class="isyf-product-section">
     <div class="isyf-product-container">
