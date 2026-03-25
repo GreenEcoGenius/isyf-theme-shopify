@@ -72,10 +72,18 @@
 
         {%- comment -%} MEN {%- endcomment -%}
         <div class="isyf-sidebar-group" data-sidebar-group>
-          <button class="isyf-sidebar-group-btn{% if handle contains 'men' and handle contains 'women' == false %} is-active{% endif %}" data-sidebar-group-toggle>
+          {%- liquid
+            assign is_men = false
+            if handle contains 'men'
+              unless handle contains 'women'
+                assign is_men = true
+              endunless
+            endif
+          -%}
+          <button class="isyf-sidebar-group-btn{% if is_men %} is-active{% endif %}" data-sidebar-group-toggle>
             Men <span>+</span>
           </button>
-          <div class="isyf-sidebar-sub{% if handle contains 'men' and handle contains 'women' == false %} is-open{% endif %}">
+          <div class="isyf-sidebar-sub{% if is_men %} is-open{% endif %}">
             <span class="isyf-sidebar-sub-title">ISYF Premium</span>
             <a href="/collections/men-premium-pulls" class="isyf-sidebar-sub-link{% if handle == 'men-premium-pulls' %} is-active{% endif %}">Pulls &amp; Cardigans</a>
             <a href="/collections/men-premium-t-shirts" class="isyf-sidebar-sub-link{% if handle == 'men-premium-t-shirts' %} is-active{% endif %}">T-shirts</a>
