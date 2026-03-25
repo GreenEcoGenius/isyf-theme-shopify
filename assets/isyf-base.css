@@ -1087,6 +1087,7 @@ p, span, a, button, input, textarea, select, label {
   position: relative;
   background: var(--Black);
   overflow: hidden;
+  margin-top: 40px;
 }
 .isyf-hero-bg {
   position: absolute;
