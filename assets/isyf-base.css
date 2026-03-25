@@ -4116,7 +4116,6 @@ div.isyf-category-image {
 
 
 /* ---------- Lookbook (lookbook/page.module.css) ---------- */
-/* Lookbook */
 .isyf-lookbook-page {
   width: 100%;
   background: var(--White);
@@ -4164,6 +4163,7 @@ div.isyf-category-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
   transition: transform 0.8s ease;
 }
@@ -4205,13 +4205,13 @@ div.isyf-category-image {
 
 /* Editorial grid */
 .isyf-lookbook-editorial {
-  padding: 4px;
+  padding: 0;
 }
 .isyf-lookbook-editorial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 320px;
-  gap: 4px;
+  grid-template-rows: 300px 300px;
+  gap: 3px;
 }
 .isyf-lookbook-editorial-item {
   overflow: hidden;
@@ -4221,6 +4221,7 @@ div.isyf-category-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
   transition: transform 0.8s ease;
 }
@@ -4229,6 +4230,9 @@ div.isyf-category-image {
 }
 .isyf-lookbook-editorial-tall {
   grid-row: span 2;
+}
+.isyf-lookbook-editorial-tall img {
+  object-position: top center;
 }
 .isyf-lookbook-editorial-wide {
   grid-column: span 2;
@@ -4259,7 +4263,7 @@ div.isyf-category-image {
   .isyf-lookbook-block { min-height: 440px; }
   .isyf-lookbook-block-text { padding: 48px 40px; }
   .isyf-lookbook-block-title { font-size: 32px; }
-  .isyf-lookbook-editorial-grid { grid-auto-rows: 260px; }
+  .isyf-lookbook-editorial-grid { grid-template-rows: 240px 240px; }
   .isyf-lookbook-cta { padding: 64px 24px; }
 }
 @media (max-width: 768px) {
@@ -4268,13 +4272,13 @@ div.isyf-category-image {
   .isyf-lookbook-hero-subtitle { font-size: 13px; }
   .isyf-lookbook-block { flex-direction: column; min-height: auto; }
   .isyf-lookbook-block-reverse { flex-direction: column; }
-  .isyf-lookbook-block-image { max-height: 400px; }
+  .isyf-lookbook-block-image { height: 360px; }
   .isyf-lookbook-block-text { padding: 40px 24px; align-items: center; text-align: center; }
   .isyf-lookbook-block-title { font-size: 28px; }
   .isyf-lookbook-block-desc { font-size: 14px; }
-  .isyf-lookbook-editorial-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+  .isyf-lookbook-editorial-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; gap: 2px; }
   .isyf-lookbook-editorial-tall { grid-row: span 2; }
-  .isyf-lookbook-editorial-wide { grid-column: span 2; }
+  .isyf-lookbook-editorial-wide { grid-column: span 1; }
   .isyf-lookbook-cta { padding: 48px 16px; }
   .isyf-lookbook-cta-title { font-size: 28px; }
 }
