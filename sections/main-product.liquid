@@ -8,17 +8,6 @@
   assign featured_image = current_variant.image | default: product.featured_image
 -%}
 
-<div style="background:#ffe0e0;border:2px solid red;padding:16px;margin:16px;font-family:monospace;font-size:13px;line-height:1.6;">
-  <strong>DEBUG (a supprimer)</strong><br>
-  product.available = {{ product.available }}<br>
-  current_variant.available = {{ current_variant.available }}<br>
-  current_variant.inventory_management = {{ current_variant.inventory_management }}<br>
-  current_variant.inventory_policy = {{ current_variant.inventory_policy }}<br>
-  current_variant.inventory_quantity = {{ current_variant.inventory_quantity }}<br>
-  {%- for v in product.variants -%}
-    variant [{{ v.title }}] : available={{ v.available }}, qty={{ v.inventory_quantity }}, management={{ v.inventory_management }}, policy={{ v.inventory_policy }}<br>
-  {%- endfor -%}
-</div>
 <div class="isyf-product-page">
   <section class="isyf-product-section">
     <div class="isyf-product-container">
