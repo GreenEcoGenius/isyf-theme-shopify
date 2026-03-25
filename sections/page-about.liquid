@@ -10,9 +10,10 @@
     <p class="isyf-lookbook-hero-subtitle">What I see, you feel.</p>
   </div>
 
-  {%- comment -%} ===== FULL-WIDTH IMAGE ===== {%- endcomment -%}
-  <div class="isyf-story-fullimage">
-    <img src="{{ 'story-hero.jpg' | asset_url }}" alt="ISYF Atelier" loading="lazy">
+  {%- comment -%} ===== BRAND IMAGE WITH OVERLAY ===== {%- endcomment -%}
+  <div class="isyf-story-brand-image">
+    <img src="{{ 'story-brand.jpg' | asset_url }}" alt="I SEE, YOU FEEL." loading="lazy">
+    <span class="isyf-story-brand-overlay">I SEE, YOU FEEL.</span>
   </div>
 
   {%- comment -%} ===== BRAND STORY ===== {%- endcomment -%}
@@ -21,29 +22,6 @@
     <h2 class="isyf-story-narrative-title">Fashion should make you feel something.</h2>
     <p class="isyf-story-narrative-text">Founded in 2026, I SEE, YOU FEEL. was born from a simple belief: in a world of fast trends and disposable clothing, we chose a different path — one where every piece carries meaning, every design speaks, and every garment connects the vision of the creator to the emotion of the wearer.</p>
     <p class="isyf-story-narrative-text">ISYF is not just a brand. It's a bridge between what we see and what you feel.</p>
-  </div>
-
-  {%- comment -%} ===== TWO COLLECTIONS ===== {%- endcomment -%}
-  <div class="isyf-lookbook-block">
-    <div class="isyf-lookbook-block-image">
-      <img src="{{ 'grid-premium.jpg' | asset_url }}" alt="ISYF Premium" loading="lazy">
-    </div>
-    <div class="isyf-lookbook-block-text">
-      <span class="isyf-lookbook-block-label">COLLECTION</span>
-      <h2 class="isyf-lookbook-block-title">ISYF Premium</h2>
-      <p class="isyf-lookbook-block-desc">Our premium line offers refined, minimalist pieces crafted with care. Embroidered details, heavyweight fabrics, and timeless silhouettes designed to last beyond the season.</p>
-    </div>
-  </div>
-
-  <div class="isyf-lookbook-block isyf-lookbook-block-reverse">
-    <div class="isyf-lookbook-block-image">
-      <img src="{{ 'lookbook-feels.jpg' | asset_url }}" alt="ISYF FEELS" loading="lazy">
-    </div>
-    <div class="isyf-lookbook-block-text">
-      <span class="isyf-lookbook-block-label">COLLECTION</span>
-      <h2 class="isyf-lookbook-block-title">ISYF FEELS</h2>
-      <p class="isyf-lookbook-block-desc">Our street line brings bold messages, vivid graphics, and accessible prices. Every piece says something — designed for those who feel before they think, and wear what they mean.</p>
-    </div>
   </div>
 
   {%- comment -%} ===== VALUES ===== {%- endcomment -%}
@@ -67,7 +45,7 @@
     </div>
   </div>
 
-  {%- comment -%} ===== ATELIER IMAGE ===== {%- endcomment -%}
+  {%- comment -%} ===== SHOWROOM IMAGE ===== {%- endcomment -%}
   <div class="isyf-story-fullimage">
     <img src="{{ 'story-atelier.jpg' | asset_url }}" alt="ISYF Showroom" loading="lazy">
   </div>
