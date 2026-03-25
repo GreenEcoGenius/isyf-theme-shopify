@@ -46,6 +46,11 @@
     text-decoration: none;
     z-index: 1;
   }
+  .isyf-header-logo-img {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
   .isyf-header-logo-text {
     font-family: 'Playfair Display', serif;
     font-size: 17px;
@@ -99,6 +104,7 @@
   @media (max-width: 768px) {
     .isyf-header-right { display: none; }
     .isyf-header-mobile-bag { display: block; }
+    .isyf-header-logo-img { height: 18px; }
     .isyf-header-logo-text { font-size: 14px; }
     .isyf-nav-drawer,
     .isyf-nav-drawer.isyf-nav-drawer-open { width: 100%; max-width: 100%; }
@@ -116,15 +122,18 @@
   <a href="/" class="isyf-header-logo">
     {%- if logo != blank -%}
       <img
-        src="{{ logo | image_url: width: 200 }}"
+        src="{{ logo | image_url: width: 400 }}"
         alt="{{ shop.name }}"
-        width="200"
-        height="auto"
         loading="eager"
-        style="height: 20px; width: auto;"
+        class="isyf-header-logo-img"
       >
     {%- else -%}
-      <span class="isyf-header-logo-text">{{ shop.name }}</span>
+      <img
+        src="{{ 'logo-isyf.png' | asset_url }}"
+        alt="{{ shop.name }}"
+        loading="eager"
+        class="isyf-header-logo-img"
+      >
     {%- endif -%}
   </a>
 

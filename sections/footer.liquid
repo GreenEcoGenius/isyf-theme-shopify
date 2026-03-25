@@ -10,13 +10,18 @@
       <a href="/" class="isyf-footer-logo">
         {%- if section.settings.logo != blank -%}
           <img
-            src="{{ section.settings.logo | image_url: width: 200 }}"
+            src="{{ section.settings.logo | image_url: width: 400 }}"
             alt="{{ shop.name }}"
             loading="lazy"
-            style="height: 18px; width: auto;"
+            style="height: 20px; width: auto;"
           >
         {%- else -%}
-          {{ shop.name }}
+          <img
+            src="{{ 'logo-isyf.png' | asset_url }}"
+            alt="{{ shop.name }}"
+            loading="lazy"
+            style="height: 20px; width: auto;"
+          >
         {%- endif -%}
       </a>
       <div class="isyf-footer-social-links">
