@@ -1,0 +1,108 @@
+{%- comment -%}
+  Journal Article — The Creative Process Behind ISYF
+{%- endcomment -%}
+
+<article class="isyf-article-page">
+  <div class="isyf-article-hero-wrapper">
+    {%- if section.settings.image != blank -%}
+      <img class="isyf-article-hero-image" src="{{ section.settings.image | image_url: width: 2000 }}" alt="The creative process behind ISYF">
+    {%- else -%}
+      <img class="isyf-article-hero-image" src="{{ 'journal-1.jpg' | asset_url }}" alt="The creative process behind ISYF">
+    {%- endif -%}
+    <div class="isyf-article-hero-overlay"></div>
+    <div class="isyf-article-hero-content">
+      <span class="isyf-article-hero-label">DESIGN</span>
+      <h1 class="isyf-article-hero-title">The Creative Process Behind ISYF</h1>
+      <span class="isyf-article-hero-date">March 2026</span>
+    </div>
+  </div>
+
+  <div class="isyf-article-body">
+    <p class="isyf-article-intro">
+      Every garment begins with a feeling. Not a trend report, not a sales forecast — a feeling. At I SEE, YOU FEEL., the creative process is an intimate dialogue between what we observe in the world and what we want you to experience when you put on one of our pieces.
+    </p>
+
+    <h2>It starts with observation</h2>
+
+    <p>
+      Our design team spends the early phase of every collection simply watching. Watching the way light falls on architecture in different cities. Watching how people move through the streets of Tallinn, Paris, Tokyo. Watching the textures of nature — the grain of raw wood, the surface of water at dusk, the way fog softens every edge it touches.
+    </p>
+    <p>
+      These observations become our mood boards. Not Pinterest boards filled with other brands' lookbooks, but living documents made of photographs we take ourselves, fabric swatches we collect from markets and mills, sketches drawn in notebooks during long train rides. The creative director, Ervis Ago, has a rule: before any garment is sketched, we must be able to describe the emotion it should carry in a single sentence.
+    </p>
+
+    <h2>From emotion to fabric</h2>
+
+    <p>
+      Once the emotional direction is set, the material search begins. For ISYF Premium, this means sourcing fabrics that feel as good as they look. We work with European mills that share our commitment to quality — wool blends from Italy, organic cotton from Portugal, linen from Lithuania. Each fabric is tested not just for durability, but for how it drapes, how it ages, how it feels against skin at different temperatures.
+    </p>
+    <p>
+      For ISYF FEELS, the approach is different but equally rigorous. The streetwear line demands fabrics that are heavier, more structured — the kind of cotton fleece that makes a hoodie feel like armour against the cold. We work with 380gsm organic cotton for our signature hoodies, brushed on the inside for a softness that improves with every wash.
+    </p>
+
+    <h2>The sketch becomes a pattern</h2>
+
+    <p>
+      Our pattern maker, based in Tallinn, translates sketches into three-dimensional forms. This is where the magic happens — and where most of the revisions occur. A sleeve might be redrawn fifteen times before the drop is exactly right. A collar might be tested in four different heights before we find the one that frames the face without constricting movement.
+    </p>
+    <p>
+      We believe in relaxed silhouettes that respect the body without clinging to it. Every ISYF piece should move with you, not against you. This philosophy drives every pattern decision — generous armholes, considered proportions, hems that fall at exactly the right point whether you're 165cm or 190cm tall.
+    </p>
+
+    <h2>Prototyping and refinement</h2>
+
+    <p>
+      The first prototype is never the final product. We produce at least three rounds of samples for every style, each time adjusting fit, finishings, and details. The team wears the prototypes in real life — to work, to dinner, on weekend walks — because clothing should be tested where it will actually be worn, not just on a fitting mannequin under studio lights.
+    </p>
+    <p>
+      Details matter more than most people realize. The weight of a zipper pull. The colour of an interior label. Whether the inside seams are flat-felled or overlocked. These invisible choices are what separate a garment you keep for a season from one you keep for years.
+    </p>
+
+    <h2>Print-on-demand meets premium craft</h2>
+
+    <p>
+      One of the things that makes ISYF unique is our hybrid production model. Our ISYF FEELS line uses print-on-demand technology — meaning each piece is made when you order it. No overproduction, no unsold inventory sitting in a warehouse, no end-of-season sales that devalue the product.
+    </p>
+    <p>
+      But print-on-demand doesn't mean we compromise on quality. We've spent months testing print methods, washability, and colour fastness to ensure that a graphic tee ordered today looks just as sharp after thirty washes. Our embroidered pieces are produced by a specialist atelier that stitches each design with the precision of traditional craftsmen.
+    </p>
+
+    <h2>The final step: naming</h2>
+
+    <p>
+      Every ISYF piece has a name, not a number. Names come from the emotions, places, or moments that inspired them. A charcoal wool overcoat might be called "Silence" because it was inspired by the quiet of an early morning in the old town. A cream knit might be called "Refuge" because it was designed to feel like coming home.
+    </p>
+    <p>
+      This might seem like a small detail, but it matters to us. When you open your wardrobe and reach for "Silence" or "Refuge," you're not just picking an outfit — you're choosing a feeling to carry through your day.
+    </p>
+
+    <blockquote>
+      "We don't design clothes. We design the way you want to feel when you walk out the door."
+      <cite>— Ervis Ago, Founder</cite>
+    </blockquote>
+
+    <p>
+      The creative process at ISYF is slow by design. In a world that moves fast, we choose to take our time — because the things worth feeling are never rushed.
+    </p>
+  </div>
+
+  <div class="isyf-article-footer">
+    <a href="/pages/journal-style" class="isyf-article-next">
+      <span class="isyf-article-next-label">NEXT ARTICLE</span>
+      <span class="isyf-article-next-title">Building a Conscious Wardrobe</span>
+    </a>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Journal: Design",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    }
+  ]
+}
+{% endschema %}

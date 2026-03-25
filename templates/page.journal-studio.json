@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-journal-studio",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "footer"
+  ]
+}
