@@ -3941,6 +3941,7 @@ div.isyf-category-image {
   line-height: 1.7;
   color: var(--Black);
   margin: 0 0 40px;
+  text-align: justify;
 }
 .isyf-article-body h2 {
   font-family: 'DM Sans', sans-serif;
@@ -3956,6 +3957,7 @@ div.isyf-category-image {
   line-height: 1.8;
   color: #444;
   margin: 0 0 20px;
+  text-align: justify;
 }
 .isyf-article-body ul {
   padding-left: 24px;
@@ -3966,6 +3968,7 @@ div.isyf-category-image {
   line-height: 1.8;
   color: #444;
   margin-bottom: 8px;
+  text-align: justify;
 }
 .isyf-article-body blockquote {
   margin: 48px 0;
